@@ -1,0 +1,27 @@
+name: Product idea
+description: A concrete way to make the tool more useful, honest or alive.
+title: "Idea: "
+labels: [idea]
+body:
+  - type: textarea
+    id: person
+    attributes:
+      label: Who is stuck?
+      description: Describe the person and the moment—not a market segment.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What decision is currently harder than it should be?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or example
+      description: A file, screenshot, rough image, deck failure or reproducible case beats a feature slogan.
+  - type: textarea
+    id: tradeoff
+    attributes:
+      label: What might this make worse?

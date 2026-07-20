@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "1.0.0",
+  "product": "Color, Please",
+  "principle": "Preview the palette doing deck work. Never sell isolated swatches as proof.",
+  "interfaceRoleLabels": {
+    "background": { "label": "Background", "explanation": "The main field behind a slide." },
+    "surface": { "label": "Panel", "explanation": "A second field for cards, text blocks, or sections." },
+    "text": { "label": "Body text", "explanation": "The default reading colour." },
+    "muted_text": { "label": "Secondary text", "explanation": "Captions, notes, and less important copy." },
+    "accent_primary": { "label": "Accent", "explanation": "The colour that interrupts or points." },
+    "accent_secondary": { "label": "Second accent", "explanation": "Use only when it has a different job." },
+    "on_accent": { "label": "Text on accent", "explanation": "Text placed inside the accent colour." },
+    "line_or_rule": { "label": "Rules and dividers", "explanation": "Boundaries that should not compete with text." }
+  },
+  "fields": {
+    "kicker": { "softCharacters": 24, "hardCharacters": 40, "multiline": false },
+    "headline": { "softCharacters": 60, "hardCharacters": 90, "multiline": true },
+    "subheadline": { "softCharacters": 140, "hardCharacters": 220, "multiline": true },
+    "body": { "softCharacters": 360, "hardCharacters": 600, "multiline": true },
+    "quote": { "softCharacters": 180, "hardCharacters": 300, "multiline": true },
+    "caption": { "softCharacters": 90, "hardCharacters": 140, "multiline": true },
+    "dataLabel": { "softCharacters": 32, "hardCharacters": 48, "multiline": false },
+    "dataValue": { "softCharacters": 16, "hardCharacters": 24, "multiline": false }
+  },
+  "fitStatuses": [
+    {
+      "id": "comfortable",
+      "meaning": "The measured text fits at the intended size and spacing."
+    },
+    {
+      "id": "tight",
+      "meaning": "The measured text fits, but exceeds the editorial soft target or leaves little breathing room."
+    },
+    {
+      "id": "does_not_fit",
+      "meaning": "The measured text overflows at the minimum permitted size. The interface must show the overflow and ask for an edit."
+    }
+  ],
+  "globalRules": {
+    "silentTruncation": false,
+    "silentAutoShrink": false,
+    "characterCountIsAdvisory": true,
+    "measuredLayoutIsDecisive": true,
+    "minimumBodyTextPxAtExportScale": 18,
+    "customImageProcessing": "local_only",
+    "customImagePurpose": "preview_only",
+    "customImageAffectsSourcePalette": false,
+    "exportDisclosureRequired": true
+  },
+  "templates": [
+    {
+      "id": "cover",
+      "name": "The cover",
+      "job": "Prove first-impression hierarchy and title legibility.",
+      "layout": "full_bleed_or_split",
+      "requiredFields": ["kicker", "headline", "subheadline"],
+      "optionalFields": ["caption"],
+      "imageSlots": 1,
+      "rolesUsed": ["background", "text", "muted_text", "accent_primary"],
+      "checks": ["headline_fit", "text_background_contrast", "image_text_collision", "accent_restraint"]
+    },
+    {
+      "id": "title_body",
+      "name": "The explanation",
+      "job": "Prove the system can carry ordinary narrative slides repeatedly.",
+      "layout": "title_and_body",
+      "requiredFields": ["headline", "body"],
+      "optionalFields": ["kicker", "caption"],
+      "imageSlots": 0,
+      "rolesUsed": ["background", "surface", "text", "muted_text", "line_or_rule"],
+      "checks": ["headline_fit", "body_fit", "text_background_contrast", "muted_text_contrast", "surface_separation"]
+    },
+    {
+      "id": "quote",
+      "name": "The voice",
+      "job": "Prove expressive type can still be read and attributed.",
+      "layout": "large_quote",
+      "requiredFields": ["quote", "caption"],
+      "optionalFields": ["kicker"],
+      "imageSlots": 0,
+      "rolesUsed": ["background", "text", "muted_text", "accent_primary"],
+      "checks": ["quote_fit", "attribution_fit", "text_background_contrast", "accent_restraint"]
+    },
+    {
+      "id": "image_text",
+      "name": "The image plus argument",
+      "job": "Prove text, image, and accent can coexist without mud or theft.",
+      "layout": "split_image_text",
+      "requiredFields": ["headline", "body"],
+      "optionalFields": ["kicker", "caption"],
+      "imageSlots": 1,
+      "rolesUsed": ["background", "surface", "text", "muted_text", "accent_primary"],
+      "checks": ["headline_fit", "body_fit", "text_background_contrast", "image_text_collision", "source_image_relationship"]
+    },
+    {
+      "id": "evidence_data",
+      "name": "The evidence",
+      "job": "Prove values, labels, and data marks remain distinguishable.",
+      "layout": "metric_and_chart",
+      "requiredFields": ["headline", "dataLabel", "dataValue"],
+      "optionalFields": ["body", "caption"],
+      "imageSlots": 0,
+      "rolesUsed": ["background", "surface", "text", "muted_text", "accent_primary", "accent_secondary", "line_or_rule"],
+      "checks": ["label_fit", "value_fit", "text_background_contrast", "non_text_contrast", "data_distinction", "not_colour_alone"]
+    }
+  ],
+  "samplePacks": [
+    {
+      "id": "film",
+      "name": "A film finding its audience",
+      "fields": {
+        "kicker": "A FEATURE FILM",
+        "headline": "What remains after the party leaves",
+        "subheadline": "A tender, difficult story about friendship, work, and the price of staying.",
+        "body": "The deck must hold still images, practical production detail, and an emotional argument without treating every slide like a poster.",
+        "quote": "We thought the night would make us free. It only made the choices visible.",
+        "caption": "Director's note",
+        "dataLabel": "SHOOT DAYS",
+        "dataValue": "24"
+      }
+    },
+    {
+      "id": "project",
+      "name": "A useful thing asking to exist",
+      "fields": {
+        "kicker": "THE PROPOSAL",
+        "headline": "A public tool for choosing color without pretending taste is science",
+        "subheadline": "Built for people making decks under real constraints: deadlines, bad projectors, too much copy, and no design department.",
+        "body": "The proposal needs to explain the problem, demonstrate the method, and make the work feel possible. Color supports the argument; it does not become the argument.",
+        "quote": "Make the useful decision visible, then let the person change it.",
+        "caption": "Working principle",
+        "dataLabel": "TEST CASES",
+        "dataValue": "30"
+      }
+    },
+    {
+      "id": "venture",
+      "name": "A company with something concrete to prove",
+      "fields": {
+        "kicker": "SEED ROUND",
+        "headline": "Infrastructure for the people already doing the invisible work",
+        "subheadline": "A practical system for small teams that have outgrown spreadsheets but not their common sense.",
+        "body": "The deck combines customer evidence, operating detail, market context, and a clear request. The palette must survive repetition and dense slides without becoming grey soup.",
+        "quote": "The work was always there. The software finally noticed it.",
+        "caption": "Customer interview, Austin",
+        "dataLabel": "ACTIVE TEAMS",
+        "dataValue": "1,280"
+      }
+    },
+    {
+      "id": "plain",
+      "name": "A plain stress test",
+      "fields": {
+        "kicker": "SECTION LABEL",
+        "headline": "Make the next decision easier.",
+        "subheadline": "A clear recommendation, enough evidence to trust it, and room for an honest question.",
+        "body": "Put the recommendation where the room can see it. Keep the evidence close enough to trust, then move the furniture into the appendix.",
+        "quote": "If the point is hiding, the deck is not finished.",
+        "caption": "Working principle",
+        "dataLabel": "HOURS SAVED EACH WEEK",
+        "dataValue": "6"
+      }
+    }
+  ],
+  "exportSlots": [
+    "plain_text_tokens",
+    "usage_guide",
+    "css_custom_properties",
+    "palette_json",
+    "specimen_png",
+    "print_view",
+    "project_json"
+  ],
+  "gatedExportSlots": ["starter_pptx"],
+  "exportContentProfiles": {
+    "plain_text_tokens": {
+      "imagePixels": "never",
+      "userCopy": "only_user_authored_labels_or_notes",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    },
+    "usage_guide": {
+      "imagePixels": "never",
+      "userCopy": "when_custom_copy_is_included",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    },
+    "css_custom_properties": {
+      "imagePixels": "never",
+      "userCopy": "never",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    },
+    "palette_json": {
+      "imagePixels": "never",
+      "userCopy": "only_user_authored_labels_or_notes",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    },
+    "specimen_png": {
+      "imagePixels": "when_selected_layout_uses_image",
+      "userCopy": "when_custom_copy_is_included",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    },
+    "print_view": {
+      "imagePixels": "when_selected_layout_uses_image",
+      "userCopy": "when_custom_copy_is_included",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    },
+    "project_json": {
+      "imagePixels": "never",
+      "userCopy": "when_custom_copy_is_included",
+      "sourceFingerprints": true,
+      "originalFilename": false
+    },
+    "starter_pptx": {
+      "imagePixels": "when_selected_layout_uses_image",
+      "userCopy": "when_custom_copy_is_included",
+      "sourceFingerprints": false,
+      "originalFilename": false
+    }
+  },
+  "exportDestinations": [
+    {
+      "id": "slides",
+      "label": "PowerPoint / Keynote / Google Slides",
+      "leadActions": ["copy_core_palette", "usage_guide"],
+      "gatedActions": ["starter_pptx"]
+    },
+    {
+      "id": "canva",
+      "label": "Canva",
+      "leadActions": ["copy_core_palette", "usage_guide"],
+      "gatedActions": []
+    },
+    {
+      "id": "design_web",
+      "label": "Figma / Framer / web",
+      "leadActions": ["css_custom_properties", "palette_json"],
+      "gatedActions": []
+    },
+    {
+      "id": "collaborator",
+      "label": "Send to a collaborator",
+      "leadActions": ["usage_guide", "specimen_png"],
+      "gatedActions": []
+    },
+    {
+      "id": "other",
+      "label": "Something else",
+      "leadActions": ["plain_text_tokens", "show_all_formats"],
+      "gatedActions": []
+    }
+  ]
+}

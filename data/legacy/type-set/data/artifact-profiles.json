@@ -1,0 +1,86 @@
+{
+  "version": "0.1.0",
+  "updatedOn": "2026-07-19",
+  "profiles": [
+    {
+      "id": "filmTvProject",
+      "label": "Film or TV project deck",
+      "defaultCharacter": "present",
+      "commonViewingContexts": ["laptop", "phone"],
+      "commonHandoffPaths": ["pdf"],
+      "preferredCharacteristics": ["titleVoice", "bodyEndurance", "captionClarity", "proseRhythm"],
+      "hazards": ["tinyTextOnImages", "styleAsQualityClaim", "sameDeckForEveryRecipient"],
+      "specimenPack": "film-tv"
+    },
+    {
+      "id": "directorTreatment",
+      "label": "Director treatment",
+      "defaultCharacter": "expressive",
+      "commonViewingContexts": ["laptop"],
+      "commonHandoffPaths": ["pdf"],
+      "preferredCharacteristics": ["expressiveDisplay", "proseRhythm", "captionClarity", "pdfFidelity"],
+      "hazards": ["overStyling", "bodyFatigue", "confidentialMaterial"],
+      "specimenPack": "treatment"
+    },
+    {
+      "id": "advertisingTreatment",
+      "label": "Advertising treatment",
+      "defaultCharacter": "expressive",
+      "commonViewingContexts": ["laptop"],
+      "commonHandoffPaths": ["pdf"],
+      "preferredCharacteristics": ["expressiveDisplay", "proseRhythm", "fastProduction", "pdfFidelity"],
+      "hazards": ["licensingShortcut", "confidentialMaterial", "displayFaceInBody"],
+      "specimenPack": "treatment"
+    },
+    {
+      "id": "startupInvestor",
+      "label": "Startup or investor deck",
+      "defaultCharacter": "quiet",
+      "commonViewingContexts": ["laptop", "largeRoom"],
+      "commonHandoffPaths": ["pdf", "editableSource"],
+      "preferredCharacteristics": ["dataStrength", "rapidScanning", "portability", "fallbackQuality"],
+      "hazards": ["crowdedSlides", "thinWeights", "typeAsTrustClaim"],
+      "specimenPack": "startup"
+    },
+    {
+      "id": "agencyPitch",
+      "label": "Agency pitch or strategy deck",
+      "defaultCharacter": "present",
+      "commonViewingContexts": ["largeRoom", "laptop"],
+      "commonHandoffPaths": ["editableSource", "pdf"],
+      "preferredCharacteristics": ["templateReuse", "collaboration", "dataStrength", "pasteInResilience"],
+      "hazards": ["capabilitiesPitchConfusion", "manualStyleDrift", "overCustomisation"],
+      "specimenPack": "agency"
+    },
+    {
+      "id": "companyCredentials",
+      "label": "Company or credentials deck",
+      "defaultCharacter": "present",
+      "commonViewingContexts": ["laptop", "largeRoom"],
+      "commonHandoffPaths": ["editableSource", "pdf"],
+      "preferredCharacteristics": ["broadStyleRange", "portability", "lowTrainingBurden", "bodyEndurance"],
+      "hazards": ["versionDrift", "manualFormatting", "uncontrolledDensity"],
+      "specimenPack": "credentials"
+    },
+    {
+      "id": "salesPartnership",
+      "label": "Sales or partnership deck",
+      "defaultCharacter": "quiet",
+      "commonViewingContexts": ["largeRoom", "laptop"],
+      "commonHandoffPaths": ["pdf", "editableSource"],
+      "preferredCharacteristics": ["liveScale", "leaveBehindScale", "dataStrength", "utilityClarity"],
+      "hazards": ["oneScaleForAllContexts", "clutteredTables", "weakPhonePerformance"],
+      "specimenPack": "sales"
+    },
+    {
+      "id": "other",
+      "label": "Other presentation",
+      "defaultCharacter": "quiet",
+      "commonViewingContexts": ["mixedUnknown"],
+      "commonHandoffPaths": [],
+      "preferredCharacteristics": ["portability", "clearHierarchy"],
+      "hazards": ["inventedIndustryExpertise", "unsupportedArtifact"],
+      "specimenPack": "generic"
+    }
+  ]
+}

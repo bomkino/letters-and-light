@@ -1,0 +1,384 @@
+/* Letters & Light — base layer.
+   Grammar: cool uncoated paper, graphite contour, one pitch-pink wax thread,
+   one dry-cobalt interruption, powder tissue, 60–80% open field.
+   Motion: transform + opacity only; exact properties; ease-out entrances. */
+
+:root {
+  --paper: #f7f5ef;
+  --paper-raised: #fdfcf8;
+  --paper-sunk: #efede4;
+  --ink: #232327;
+  --graphite: #55555c;
+  --graphite-faint: #83837f;
+  --rule: color-mix(in oklab, var(--ink) 16%, transparent);
+  --rule-strong: color-mix(in oklab, var(--ink) 42%, transparent);
+  --thread: #d63d84;
+  --thread-ink: #a92460;
+  --cobalt: #2b4ad8;
+  --cobalt-deep: #1f37a8;
+  --tissue-blue: #bcd2e8;
+  --tissue-pink: #f2b4cd;
+  --tissue-lilac: #ccb8dd;
+  --tissue-overlap: #b79bd1;
+  --caution: #8a5a17;
+  --blocking: #a52a2e;
+  --ok: #2e6b46;
+
+  --serif: ui-serif, "New York", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 120ms;
+  --dur-pop: 180ms;
+  --dur-move: 260ms;
+  --dur-drawer: 340ms;
+
+  --measure: 68ch;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --radius: 3px;
+}
+
+[data-theme="dark"] {
+  --paper: #1c1c20;
+  --paper-raised: #242429;
+  --paper-sunk: #17171a;
+  --ink: #efede4;
+  --graphite: #b9b7ac;
+  --graphite-faint: #8a887f;
+  --rule: color-mix(in oklab, var(--ink) 20%, transparent);
+  --rule-strong: color-mix(in oklab, var(--ink) 46%, transparent);
+  --thread: #ef6aa8;
+  --thread-ink: #f49ec4;
+  --cobalt: #7d92ee;
+  --cobalt-deep: #a5b3f4;
+  --caution: #e0b36a;
+  --blocking: #e88b8e;
+  --ok: #8ed0ab;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--serif);
+  font-weight: 560;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--cobalt-deep);
+  text-decoration-color: color-mix(in oklab, var(--cobalt) 55%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Focus is art direction: one graphite ring, one pink thread beneath it. */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: 0 3px 0 0 var(--thread);
+  border-radius: 2px;
+}
+
+/* Programmatic focus targets (route/step headings, main landmark) must not
+   paint the interactive ring — focus moves for screen readers only. */
+h1[tabindex="-1"]:focus,
+h1[tabindex="-1"]:focus-visible,
+h2[tabindex="-1"]:focus,
+h2[tabindex="-1"]:focus-visible,
+main[tabindex="-1"]:focus,
+main[tabindex="-1"]:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+::selection {
+  background: var(--tissue-pink);
+  color: #232327;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  transition: top var(--dur-move) var(--ease-sheet);
+}
+
+.skip-link:focus-visible {
+  top: 0.75rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.rule--thread {
+  border-top: 2px solid var(--thread);
+  width: 3.5rem;
+}
+
+/* Raster art always sits on bounded cool-paper, in both themes. Never inverted. */
+.art-card {
+  background: #f7f5ef;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: clamp(0.5rem, 1.4vw, 1rem);
+}
+
+.art-card img {
+  border-radius: 2px;
+}
+
+/* Buttons: real controls, physical press, no pill-everything. */
+.btn {
+  appearance: none;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 0.62rem 1.05rem;
+  font-weight: 560;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: transform var(--dur-press) var(--ease-out), background-color var(--dur-press) var(--ease-out),
+    border-color var(--dur-press) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.btn--cobalt {
+  background: var(--cobalt);
+  border-color: var(--cobalt);
+  color: #f7f5ef;
+}
+
+[data-theme="dark"] .btn--cobalt {
+  color: #101223;
+}
+
+.btn--thread {
+  background: transparent;
+  border-color: var(--thread);
+  color: var(--thread-ink);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--rule-strong);
+  color: var(--graphite);
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn[disabled]:active {
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:not([disabled]):hover {
+    background: var(--paper-sunk);
+  }
+
+  .btn--primary:not([disabled]):hover {
+    background: color-mix(in oklab, var(--ink) 88%, var(--paper));
+  }
+
+  .btn--cobalt:not([disabled]):hover {
+    background: var(--cobalt-deep);
+  }
+
+  .btn--ghost:not([disabled]):hover {
+    color: var(--ink);
+    border-color: var(--ink);
+    background: transparent;
+  }
+}
+
+/* Form controls */
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label,
+.field legend {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.field .hint {
+  font-size: 0.85rem;
+  color: var(--graphite);
+}
+
+.text-input,
+textarea.text-input {
+  width: 100%;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.7rem;
+  transition: border-color var(--dur-press) var(--ease-out);
+}
+
+.text-input:focus-visible {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 3px 0 0 var(--thread);
+}
+
+/* Radio/checkbox cards — long sentences get room; no pills. */
+.choice-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.choice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  cursor: pointer;
+  transition: border-color var(--dur-press) var(--ease-out), background-color var(--dur-press) var(--ease-out),
+    transform var(--dur-press) var(--ease-out);
+}
+
+.choice:active {
+  transform: scale(0.99);
+}
+
+.choice input {
+  margin-top: 0.22rem;
+  accent-color: var(--cobalt);
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.choice:has(input:checked) {
+  border-color: var(--cobalt);
+  background: color-mix(in oklab, var(--cobalt) 7%, var(--paper-raised));
+}
+
+.choice:has(input:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: 0 3px 0 0 var(--thread);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .choice:hover {
+    border-color: var(--rule-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Opacity and colour may still transition; movement may not. */
+  .btn,
+  .choice,
+  .role-chip,
+  .door,
+  .drawer,
+  .hero-layer,
+  .flip-item {
+    transition-property: opacity, background-color, border-color, color !important;
+    transition-duration: 0.01ms !important;
+  }
+}

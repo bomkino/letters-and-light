@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "updatedOn": "2026-07-19",
+  "model": "ordered-gates-no-score",
+  "publicEligibleStatuses": ["verified", "limited"],
+  "gates": [
+    { "id": "G1", "name": "mandatoryFont", "failure": "boundaryResult" },
+    { "id": "G2", "name": "writingSystem", "failure": "removeSystem" },
+    { "id": "G3", "name": "licence", "failure": "removeSystem" },
+    { "id": "G4", "name": "application", "failure": "removeOrCaveatCandidate" },
+    { "id": "G5", "name": "delivery", "failure": "removeSystem" },
+    { "id": "G6", "name": "density", "failure": "removeSystem" },
+    { "id": "G7", "name": "data", "failure": "removeSystem" },
+    { "id": "G8", "name": "viewing", "failure": "removeSystem" }
+  ],
+  "ordering": [
+    "artifactAndDeliveryFit",
+    "evidenceCompletenessAndFreshness",
+    "lowerFileAndHandoffComplexity",
+    "densityOrDataStrength",
+    "characterPreference",
+    "distinctnessFromOtherAnswers"
+  ],
+  "answerRoles": ["ourPick", "quieter", "moreCharacter"],
+  "roleAssignmentByCount": {
+    "one": ["ourPick"],
+    "two": ["ourPick", "oneTruthfulAlternativeRole"],
+    "three": ["ourPick", "quieter", "moreCharacter"]
+  },
+  "insufficientSurvivors": "Return fewer systems with reasons. Never duplicate or relabel to fill three slots.",
+  "traceRequired": true
+}

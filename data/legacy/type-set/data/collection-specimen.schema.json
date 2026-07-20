@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/type-set/collection-specimen.schema.json",
+  "title": "Type Set collection specimen",
+  "type": "object",
+  "required": ["id", "systemId", "title", "body", "difficultLine", "metric", "metricLabel"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "systemId": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "body": { "type": "string", "minLength": 1 },
+    "difficultLine": { "type": "string", "minLength": 1 },
+    "metric": { "type": "string", "minLength": 1 },
+    "metricLabel": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}

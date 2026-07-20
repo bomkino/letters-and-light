@@ -1,0 +1,148 @@
+{
+  "version": "0.1.0",
+  "updatedOn": "2026-07-19",
+  "questions": [
+    {
+      "id": "artifactType",
+      "prompt": "What are you making?",
+      "selection": "single",
+      "required": true,
+      "options": [
+        { "id": "filmTvProject", "label": "Film or TV project deck" },
+        { "id": "directorTreatment", "label": "Director treatment" },
+        { "id": "advertisingTreatment", "label": "Advertising treatment" },
+        { "id": "startupInvestor", "label": "Startup or investor deck" },
+        { "id": "agencyPitch", "label": "Agency pitch or strategy deck" },
+        { "id": "companyCredentials", "label": "Company or credentials deck" },
+        { "id": "salesPartnership", "label": "Sales or partnership deck" },
+        { "id": "other", "label": "Other presentation" }
+      ]
+    },
+    {
+      "id": "otherDecision",
+      "prompt": "What decision should this deck help someone make?",
+      "selection": "text",
+      "required": false,
+      "showWhen": { "artifactType": ["other"] }
+    },
+    {
+      "id": "existingFontConstraint",
+      "prompt": "Are you required to use an existing font?",
+      "selection": "single",
+      "required": true,
+      "options": [
+        { "id": "none", "label": "No—help me choose" },
+        { "id": "flexible", "label": "We have one, but alternatives are allowed" },
+        { "id": "mandatory", "label": "Yes—it is mandatory" },
+        { "id": "unknown", "label": "I do not know" }
+      ]
+    },
+    {
+      "id": "mandatoryFontName",
+      "prompt": "What is the exact family name?",
+      "selection": "text",
+      "required": true,
+      "showWhen": { "existingFontConstraint": ["mandatory"] }
+    },
+    {
+      "id": "authoringTool",
+      "prompt": "Where will you build it?",
+      "selection": "single",
+      "required": true,
+      "options": [
+        { "id": "powerPoint", "label": "PowerPoint" },
+        { "id": "keynote", "label": "Keynote" },
+        { "id": "googleSlides", "label": "Google Slides" },
+        { "id": "canva", "label": "Canva" },
+        { "id": "figmaAdobe", "label": "Figma or Adobe" },
+        { "id": "unknown", "label": "Not sure yet" }
+      ]
+    },
+    {
+      "id": "handoffPaths",
+      "prompt": "How must it leave your hands?",
+      "selection": "multi",
+      "required": true,
+      "options": [
+        { "id": "ownDevice", "label": "I present it from my own device" },
+        { "id": "otherPresenter", "label": "Someone else presents it" },
+        { "id": "pdf", "label": "I send a PDF" },
+        { "id": "editableSource", "label": "Others must edit the source file" },
+        { "id": "crossApplication", "label": "It moves between applications" }
+      ]
+    },
+    {
+      "id": "viewingContexts",
+      "prompt": "Where will it usually be seen?",
+      "selection": "multi",
+      "required": true,
+      "options": [
+        { "id": "largeRoom", "label": "Large room or projector" },
+        { "id": "laptop", "label": "Laptop or screen-share" },
+        { "id": "phone", "label": "Phone often" },
+        { "id": "mixedUnknown", "label": "Mixed or unknown" }
+      ]
+    },
+    {
+      "id": "density",
+      "prompt": "How much text does a normal slide carry?",
+      "selection": "single",
+      "required": true,
+      "options": [
+        { "id": "sparse", "label": "Sparse—title, statement, image" },
+        { "id": "moderate", "label": "Moderate—title plus short explanation" },
+        { "id": "dense", "label": "Dense—paragraphs, bios, detail, appendix" },
+        { "id": "varied", "label": "It varies a lot" }
+      ]
+    },
+    {
+      "id": "contentNeeds",
+      "prompt": "What must the system handle?",
+      "selection": "multi",
+      "required": true,
+      "options": [
+        { "id": "wordsImages", "label": "Mostly words and images" },
+        { "id": "chartsNumbers", "label": "Charts and large numbers" },
+        { "id": "tablesFinance", "label": "Tables or financial detail" },
+        { "id": "technicalNotation", "label": "Dates, currency, technical notation" },
+        { "id": "longProse", "label": "Long quotations or prose" }
+      ]
+    },
+    {
+      "id": "writingSystems",
+      "prompt": "Which writing systems must work?",
+      "selection": "multi",
+      "required": true,
+      "options": [
+        { "id": "latin", "label": "Latin" },
+        { "id": "greek", "label": "Greek" },
+        { "id": "cyrillic", "label": "Cyrillic" },
+        { "id": "devanagari", "label": "Devanagari" },
+        { "id": "arabic", "label": "Arabic" },
+        { "id": "hebrew", "label": "Hebrew" },
+        { "id": "thai", "label": "Thai" },
+        { "id": "cjk", "label": "Chinese, Japanese, or Korean" },
+        { "id": "other", "label": "Something else" }
+      ]
+    },
+    {
+      "id": "character",
+      "prompt": "How much character may typography carry?",
+      "selection": "single",
+      "required": true,
+      "options": [
+        { "id": "quiet", "label": "Quiet—get out of the way" },
+        { "id": "present", "label": "Present—clear voice, still restrained" },
+        { "id": "expressive", "label": "Expressive—titles may perform" },
+        { "id": "unknown", "label": "Not sure" }
+      ]
+    },
+    {
+      "id": "previewCopy",
+      "prompt": "Try your own words",
+      "selection": "structuredText",
+      "required": false,
+      "fields": ["deckTitle", "slideTitle", "body", "quote", "attribution", "metric", "tableSample"]
+    }
+  ]
+}

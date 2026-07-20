@@ -1,0 +1,143 @@
+{
+  "version": "0.2.0",
+  "updatedOn": "2026-07-19",
+  "warning": "Prototype systems only. No public recommendation until validation passes.",
+  "systems": [
+    {
+      "id": "ts01-clear-workhorse",
+      "name": "Plainspoken",
+      "status": "candidate",
+      "collectionOrder": 1,
+      "storyIds": ["story-source-sans-3"],
+      "roles": {
+        "display": { "fontId": "sourceSans3" },
+        "body": { "fontId": "sourceSans3" },
+        "utility": { "fontId": "sourceSans3" }
+      },
+      "character": "quiet",
+      "candidateStrengths": ["singleFamily", "bodyEndurance", "tabularNumerals", "trueItalics"],
+      "candidateArtifacts": ["startupInvestor", "agencyPitch", "companyCredentials", "salesPartnership"],
+      "oneThingNotToDo": "Do not make every title heavy merely because the family can take it.",
+      "requiredValidation": ["twelveSlideRig", "platformMatrix", "languageCorpus", "humanReview"]
+    },
+    {
+      "id": "ts02-data-workhorse",
+      "name": "Human / Machine",
+      "status": "candidate",
+      "collectionOrder": 2,
+      "storyIds": ["story-ibm-plex-sans"],
+      "roles": {
+        "display": { "fontId": "ibmPlexSans" },
+        "body": { "fontId": "ibmPlexSans" },
+        "utility": { "fontId": "ibmPlexSans" }
+      },
+      "character": "present",
+      "candidateStrengths": ["singleFamily", "tabularNumerals", "widthRange", "trueItalics"],
+      "candidateArtifacts": ["startupInvestor", "agencyPitch", "companyCredentials", "salesPartnership"],
+      "oneThingNotToDo": "Do not use condensed width as a substitute for editing a crowded slide.",
+      "requiredValidation": ["twelveSlideRig", "widthAxisAcrossApps", "platformMatrix", "humanReview"]
+    },
+    {
+      "id": "ts03-editorial-pair",
+      "name": "Page & Screen",
+      "status": "candidate",
+      "collectionOrder": 3,
+      "storyIds": ["story-source-serif-4", "story-source-sans-3"],
+      "roles": {
+        "display": { "fontId": "sourceSerif4" },
+        "body": { "fontId": "sourceSans3" },
+        "utility": { "fontId": "sourceSans3" }
+      },
+      "character": "present",
+      "candidateStrengths": ["roleContrast", "proseRhythm", "tabularNumerals", "trueItalics"],
+      "candidateArtifacts": ["filmTvProject", "directorTreatment", "advertisingTreatment", "companyCredentials"],
+      "oneThingNotToDo": "Do not put small Source Serif Display over a photograph and call it atmosphere.",
+      "requiredValidation": ["twelveSlideRig", "opticalSizeAcrossApps", "pairingDistinctness", "platformMatrix", "humanReview"]
+    },
+    {
+      "id": "ts04-rebuilt",
+      "name": "Rebuilt",
+      "status": "candidate",
+      "collectionOrder": 4,
+      "storyIds": ["story-bricolage-grotesque", "story-source-sans-3"],
+      "roles": {
+        "display": { "fontId": "bricolageGrotesque" },
+        "body": { "fontId": "sourceSans3" },
+        "utility": { "fontId": "sourceSans3" }
+      },
+      "character": "expressive",
+      "candidateStrengths": ["distinctDisplayVoice", "widthRange", "opticalSizeRange"],
+      "candidateArtifacts": ["filmTvProject", "directorTreatment", "advertisingTreatment"],
+      "oneThingNotToDo": "Do not fake an italic or let the display face colonize the body copy.",
+      "requiredValidation": ["displayOnlyDiscipline", "twelveSlideRig", "applicationNaming", "platformMatrix", "humanReview"]
+    },
+    {
+      "id": "ts05-clear-sightline",
+      "name": "Clear Sightline",
+      "status": "candidate",
+      "collectionOrder": 5,
+      "storyIds": ["story-atkinson-hyperlegible-next"],
+      "roles": {
+        "display": { "fontId": "atkinsonHyperlegibleNext" },
+        "body": { "fontId": "atkinsonHyperlegibleNext" },
+        "utility": { "fontId": "atkinsonHyperlegibleNext" }
+      },
+      "character": "quiet",
+      "candidateStrengths": ["singleFamily", "distinctLetterforms", "broadWeightRange", "trueItalics"],
+      "candidateArtifacts": ["startupInvestor", "agencyPitch", "companyCredentials", "salesPartnership"],
+      "oneThingNotToDo": "Do not call the deck accessible because one accessibility-informed typeface was used.",
+      "requiredValidation": ["twelveSlideRig", "lowVisionUserReview", "platformMatrix", "languageCorpus", "humanReview"]
+    },
+    {
+      "id": "ts06-long-read",
+      "name": "Long Read",
+      "status": "candidate",
+      "collectionOrder": 6,
+      "storyIds": ["story-newsreader", "story-source-sans-3"],
+      "roles": {
+        "display": { "fontId": "newsreader" },
+        "body": { "fontId": "newsreader" },
+        "utility": { "fontId": "sourceSans3" }
+      },
+      "character": "present",
+      "candidateStrengths": ["screenReadingBrief", "proseRhythm", "opticalSizeRange", "quietUtility"],
+      "candidateArtifacts": ["filmTvProject", "directorTreatment", "advertisingTreatment", "companyCredentials"],
+      "oneThingNotToDo": "Do not use the serif's reading brief as proof that dense slides should stay dense.",
+      "requiredValidation": ["denseProseSpecimen", "phoneSpecimen", "opticalSizeAcrossApps", "pairingDistinctness", "platformMatrix", "humanReview"]
+    },
+    {
+      "id": "ts07-one-family-two-voices",
+      "name": "One Family, Two Voices",
+      "status": "candidate",
+      "collectionOrder": 7,
+      "storyIds": ["story-ibm-plex-serif", "story-ibm-plex-sans"],
+      "roles": {
+        "display": { "fontId": "ibmPlexSerif" },
+        "body": { "fontId": "ibmPlexSerif" },
+        "utility": { "fontId": "ibmPlexSans" }
+      },
+      "character": "present",
+      "candidateStrengths": ["superfamilyRelationship", "proseRhythm", "tabularNumerals", "utilityClarity"],
+      "candidateArtifacts": ["filmTvProject", "startupInvestor", "agencyPitch", "companyCredentials"],
+      "oneThingNotToDo": "Do not assume a shared family name guarantees identical script coverage or file versions.",
+      "requiredValidation": ["canonicalFileSelection", "twelveSlideRig", "pairingDistinctness", "platformMatrix", "humanReview"]
+    },
+    {
+      "id": "ts08-soft-edges",
+      "name": "Soft Edges",
+      "status": "candidate",
+      "collectionOrder": 8,
+      "storyIds": ["story-fraunces", "story-source-sans-3"],
+      "roles": {
+        "display": { "fontId": "fraunces" },
+        "body": { "fontId": "sourceSans3" },
+        "utility": { "fontId": "sourceSans3" }
+      },
+      "character": "expressive",
+      "candidateStrengths": ["distinctDisplayVoice", "softnessAxis", "opticalSizeRange", "quietBody"],
+      "candidateArtifacts": ["filmTvProject", "directorTreatment", "advertisingTreatment", "companyCredentials"],
+      "oneThingNotToDo": "Do not use Fraunces for tables, footnotes, or every sentence that wants attention.",
+      "requiredValidation": ["axisPresetSelection", "displayOnlyDiscipline", "twelveSlideRig", "platformMatrix", "humanReview"]
+    }
+  ]
+}

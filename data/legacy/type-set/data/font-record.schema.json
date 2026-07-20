@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/type-set/font-record.schema.json",
+  "title": "Type Set font record",
+  "type": "object",
+  "required": ["id", "family", "status", "storyId", "source", "licence", "files", "writingSystemEvidence", "reviewedOn"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "family": { "type": "string", "minLength": 1 },
+    "storyId": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["candidate", "testing", "verified", "limited", "rejected", "stale"] },
+    "source": {
+      "type": "object",
+      "required": ["canonicalProject", "repository", "retrievedOn", "maintenanceState"],
+      "properties": {
+        "canonicalProject": { "type": "string", "format": "uri" },
+        "repository": { "type": "string", "format": "uri" },
+        "release": { "type": "string" },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "retrievedOn": { "type": "string", "format": "date" },
+        "maintenanceState": { "enum": ["active", "stable", "unclear", "unmaintained"] }
+      },
+      "additionalProperties": false
+    },
+    "licence": {
+      "type": "object",
+      "required": ["spdx", "copyright", "licenceFile", "verified"],
+      "properties": {
+        "spdx": { "type": "string" },
+        "copyright": { "type": "string" },
+        "licenceFile": { "type": "string" },
+        "reservedFontNames": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "verified": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["fileId", "purpose", "provider", "sourceUrl", "filename", "format", "style", "version", "sha256", "fsType"],
+        "properties": {
+          "fileId": { "type": "string", "minLength": 1 },
+          "purpose": { "enum": ["webPreview", "desktopApplication", "platformObservation"] },
+          "provider": { "type": "string", "minLength": 1 },
+          "sourceUrl": { "type": "string", "format": "uri" },
+          "filename": { "type": "string" },
+          "format": { "enum": ["ttf", "otf", "woff", "woff2"] },
+          "style": { "type": "string" },
+          "version": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "fsType": { "type": "integer", "minimum": 0 },
+          "convertedFromFileId": { "type": "string" },
+          "conversionCommand": { "type": "string" },
+          "axes": { "type": "array", "items": { "type": "object" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "features": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "writingSystemEvidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["writingSystem", "binaryChecked", "corpusChecked", "humanReviewed"],
+        "properties": {
+          "writingSystem": { "type": "string" },
+          "languages": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "binaryChecked": { "type": "boolean" },
+          "corpusChecked": { "type": "boolean" },
+          "humanReviewed": { "type": "boolean" },
+          "evidenceIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+        },
+        "additionalProperties": false
+      }
+    },
+    "applicationEvidenceIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "reviewedOn": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

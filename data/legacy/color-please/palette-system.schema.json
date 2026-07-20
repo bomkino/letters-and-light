@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/schemas/color-please/palette-system.v1.schema.json",
+  "title": "Color, Please palette system",
+  "description": "Stable handoff contract between the headless colour engine and any interface or exporter.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "strategy",
+    "mode",
+    "recommended",
+    "rationale",
+    "character",
+    "roles",
+    "sourceMap",
+    "warnings",
+    "determinism"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "strategy": {
+      "type": "string",
+      "enum": ["faithful", "quieter", "higher_contrast"]
+    },
+    "mode": { "type": "string", "enum": ["light", "dark"] },
+    "recommended": { "type": "boolean" },
+    "rationale": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "character": { "$ref": "#/$defs/character" },
+    "roles": { "$ref": "#/$defs/roles" },
+    "sourceMap": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sourceCluster" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/warning" }
+    },
+    "determinism": { "$ref": "#/$defs/determinism" }
+  },
+  "$defs": {
+    "rgb": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["r", "g", "b"],
+      "properties": {
+        "r": { "type": "integer", "minimum": 0, "maximum": 255 },
+        "g": { "type": "integer", "minimum": 0, "maximum": 255 },
+        "b": { "type": "integer", "minimum": 0, "maximum": 255 }
+      }
+    },
+    "oklch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["l", "c", "h"],
+      "properties": {
+        "l": { "type": "number", "minimum": 0, "maximum": 1 },
+        "c": { "type": "number", "minimum": 0 },
+        "h": {
+          "oneOf": [
+            { "type": "number", "minimum": 0, "exclusiveMaximum": 360 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "clusterId", "sourceHex", "adjustments"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["sampled", "adjusted", "derived", "user_supplied"]
+        },
+        "clusterId": { "type": ["string", "null"] },
+        "sourceHex": {
+          "oneOf": [
+            { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+            { "type": "null" }
+          ]
+        },
+        "adjustments": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "roleToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "hex",
+        "rgb",
+        "oklch",
+        "provenance",
+        "reason",
+        "suggestedUses",
+        "contrastAgainst",
+        "warnings"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "role": {
+          "type": "string",
+          "enum": [
+            "background",
+            "surface",
+            "text",
+            "muted_text",
+            "accent_primary",
+            "accent_secondary",
+            "on_accent",
+            "line_or_rule"
+          ]
+        },
+        "hex": { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+        "rgb": { "$ref": "#/$defs/rgb" },
+        "oklch": { "$ref": "#/$defs/oklch" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "reason": { "type": "string", "minLength": 1 },
+        "suggestedUses": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "contrastAgainst": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 1, "maximum": 21 }
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/warning" }
+        }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "background",
+        "surface",
+        "text",
+        "muted_text",
+        "accent_primary",
+        "on_accent"
+      ],
+      "properties": {
+        "background": { "$ref": "#/$defs/roleToken" },
+        "surface": { "$ref": "#/$defs/roleToken" },
+        "text": { "$ref": "#/$defs/roleToken" },
+        "muted_text": { "$ref": "#/$defs/roleToken" },
+        "accent_primary": { "$ref": "#/$defs/roleToken" },
+        "accent_secondary": { "$ref": "#/$defs/roleToken" },
+        "on_accent": { "$ref": "#/$defs/roleToken" },
+        "line_or_rule": { "$ref": "#/$defs/roleToken" }
+      }
+    },
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chroma", "contrast", "lightness", "temperature", "variety", "sourceDistance"],
+      "properties": {
+        "chroma": { "type": "string", "enum": ["restrained", "moderate", "vivid"] },
+        "contrast": { "type": "string", "enum": ["soft", "clear", "sharp"] },
+        "lightness": { "type": "string", "enum": ["shadow-led", "balanced", "light-led"] },
+        "temperature": { "type": "string", "enum": ["cool", "balanced", "warm", "mixed"] },
+        "variety": { "type": "string", "enum": ["tight", "related", "varied"] },
+        "sourceDistance": { "type": "string", "enum": ["close", "edited", "constructed"] }
+      }
+    },
+    "sourceCluster": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "hex", "population", "protected", "usedByRoles"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "hex": { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+        "population": { "type": "number", "minimum": 0, "maximum": 1 },
+        "protected": { "type": "boolean" },
+        "usedByRoles": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "severity": { "type": "string", "enum": ["note", "caution", "blocking"] },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    },
+    "determinism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workingPixelHash", "crop", "engineVersion", "variationIndex", "capabilities"],
+      "properties": {
+        "workingPixelHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "crop": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "width", "height"],
+          "properties": {
+            "x": { "type": "number", "minimum": 0, "maximum": 1 },
+            "y": { "type": "number", "minimum": 0, "maximum": 1 },
+            "width": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+            "height": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }
+          }
+        },
+        "engineVersion": { "type": "string", "minLength": 1 },
+        "variationIndex": { "type": "integer", "minimum": 0 },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

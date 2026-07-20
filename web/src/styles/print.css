@@ -1,0 +1,44 @@
+/* Letters & Light — print layer: usage guide + browser-print specimen. */
+
+@media print {
+  :root {
+    --paper: #ffffff;
+    --paper-raised: #ffffff;
+    --ink: #1a1a1d;
+    --graphite: #44444a;
+    --rule: #c9c9c4;
+    --rule-strong: #9a9a94;
+  }
+
+  .site-header,
+  .site-footer,
+  .candidate-banner,
+  .no-print,
+  .studio-rail,
+  .skip-link {
+    display: none !important;
+  }
+
+  .site-main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .art-card,
+  .card,
+  .drawer,
+  .role-chip,
+  .rig-stage {
+    break-inside: avoid;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--graphite);
+  }
+}
+
+@page {
+  margin: 18mm;
+}

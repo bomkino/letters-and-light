@@ -1,0 +1,38 @@
+{
+  "id": "FB-002-source-serif-4-2026-07-19",
+  "kind": "fontBinary",
+  "status": "pass",
+  "testedOn": "2026-07-19",
+  "tester": {
+    "role": "automated fontTools inspection with human result review"
+  },
+  "subjects": {
+    "fontIds": ["sourceSerif4"],
+    "fileIds": ["ff-source-serif-4-gf-4-004-roman-vf"],
+    "fileHashes": ["97b2d4da6e3cb494b5a1e66ae176914d852ccabef49e0c02c0df25f3e39aca0b"]
+  },
+  "environment": {
+    "operatingSystem": "macOS",
+    "operatingSystemVersion": "27.0",
+    "application": "fontTools",
+    "applicationVersion": "4.63.0",
+    "device": "arm64 Mac",
+    "networkState": "online"
+  },
+  "input": "SourceSerif4[opsz,wght].ttf from Google Fonts commit 7b203a635ebe80801c80f29633d4fc467cd1214e.",
+  "steps": [
+    "Download the exact TTF from the pinned Google Fonts source commit.",
+    "Calculate SHA-256.",
+    "Inspect name, version, OS/2 fsType, fvar axes, cmap, GSUB/GPOS feature tags, and required currency/punctuation code points.",
+    "Compare advance widths of base digits zero through nine."
+  ],
+  "expected": "File parses cleanly; identity and version are readable; embedding flag, axes, binary coverage, OpenType features, currency glyphs, and numeral widths can be recorded.",
+  "actual": "Parsed as Source Serif 4 version 4.004. SHA-256 matched candidate record. fsType was 0. Weight axis was 200–900 and optical-size axis 8–60. Basic Latin, extended Latin, Greek, and Cyrillic code points were present. INR, USD, EUR, GBP, JPY, bullet, en dash, and em dash were present. Base digits had equal advance widths; proportional and tabular figure features were present.",
+  "artifacts": [
+    {
+      "pathOrUrl": "../Data/candidate-fonts.json",
+      "description": "Candidate metadata derived from this inspection"
+    }
+  ],
+  "notes": "Pass covers binary inspection only. Optical-size behaviour, exact language shaping, application behaviour, static file choice, and human typography review remain unverified."
+}

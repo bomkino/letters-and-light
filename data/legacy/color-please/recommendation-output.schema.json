@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/schemas/color-please/recommendation-output.v1.schema.json",
+  "title": "Color, Please recommendation output",
+  "description": "Inspectable recommendation contract. It distinguishes user answers, measured facts, rules, uncertainty, trade-offs, and alternatives.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "recommendedSystemId",
+    "recommendedStrategy",
+    "recommendedMode",
+    "headline",
+    "because",
+    "preserved",
+    "changed",
+    "weaknesses",
+    "uncertainty",
+    "alternatives",
+    "nextAction"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "status": {
+      "type": "string",
+      "enum": ["sensible_first_pass", "best_fit_for_answers"]
+    },
+    "recommendedSystemId": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "recommendedStrategy": {
+      "type": "string",
+      "enum": ["faithful", "quieter", "higher_contrast"]
+    },
+    "recommendedMode": { "type": "string", "enum": ["light", "dark"] },
+    "headline": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "because": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/reasonFact" }
+    },
+    "preserved": {
+      "type": "array",
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/changeNote" }
+    },
+    "changed": {
+      "type": "array",
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/changeNote" }
+    },
+    "weaknesses": {
+      "type": "array",
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/weakness" }
+    },
+    "uncertainty": {
+      "type": "array",
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/uncertainty" }
+    },
+    "alternatives": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "$ref": "#/$defs/alternative" }
+    },
+    "nextAction": { "$ref": "#/$defs/nextAction" }
+  },
+  "$defs": {
+    "reasonFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label", "value", "ruleId"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["user_answer", "measured_fact", "declared_default"]
+        },
+        "label": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "value": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "ruleId": { "type": ["string", "null"], "maxLength": 120 }
+      }
+    },
+    "changeNote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["roleId", "summary", "provenanceKind"],
+      "properties": {
+        "roleId": { "type": ["string", "null"], "maxLength": 120 },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "provenanceKind": {
+          "type": "string",
+          "enum": ["sampled", "adjusted", "derived", "user_supplied", "not_applicable"]
+        }
+      }
+    },
+    "weakness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "summary", "affectedUse", "severity"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "affectedUse": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "severity": {
+          "type": "string",
+          "enum": ["note", "use_with_care", "fix_before_use"]
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputId", "assumption", "howToResolve"],
+      "properties": {
+        "inputId": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "assumption": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "howToResolve": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["systemId", "strategy", "label", "whenUseful", "tradeOff"],
+      "properties": {
+        "systemId": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "strategy": {
+          "type": "string",
+          "enum": ["faithful", "quieter", "higher_contrast"]
+        },
+        "label": {
+          "type": "string",
+          "enum": ["worth_comparing", "useful_under_different_pressure"]
+        },
+        "whenUseful": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "tradeOff": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    },
+    "nextAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "reason"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [
+            "inspect_specimens",
+            "answer_context",
+            "test_own_copy",
+            "resolve_warning",
+            "choose_system",
+            "export"
+          ]
+        },
+        "label": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "reason": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    }
+  }
+}

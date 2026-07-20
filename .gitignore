@@ -1,0 +1,14 @@
+.DS_Store
+Icon*
+.next/
+.open-next/
+.wrangler/
+coverage/
+dist/
+node_modules/
+.env
+.env.*
+*.local
+*.log
+*.tgz
+*.tsbuildinfo

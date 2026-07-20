@@ -1,0 +1,37 @@
+{
+  "id": "FB-007-ibm-plex-serif-2026-07-19",
+  "kind": "fontBinary",
+  "status": "caveat",
+  "testedOn": "2026-07-19",
+  "tester": {
+    "role": "automated fontTools inspection with human result review"
+  },
+  "subjects": {
+    "fontIds": ["ibmPlexSerif"],
+    "fileIds": ["ff-ibm-plex-serif-gf-2-6-regular"],
+    "fileHashes": ["e882efa9c41949a528ac2369079ec5ef050c1c996bbd0bacce3c3326d44cf80d"]
+  },
+  "environment": {
+    "operatingSystem": "macOS",
+    "operatingSystemVersion": "27.0",
+    "application": "fontTools",
+    "applicationVersion": "4.63.0",
+    "device": "arm64 Mac",
+    "networkState": "online"
+  },
+  "input": "IBMPlexSerif-Regular.ttf from Google Fonts commit b598f5e3ad6849188c9c71714b0fafe11dc88e02.",
+  "steps": [
+    "Download the exact TTF from the pinned Google Fonts source commit.",
+    "Calculate SHA-256.",
+    "Inspect name, version, OS/2 fsType, cmap, GSUB/GPOS feature tags, and required currency code points.",
+    "Compare advance widths of base digits zero through nine.",
+    "Compare the reported version with IBM's canonical v6.4.2 package."
+  ],
+  "expected": "File parses cleanly and any divergence from the canonical IBM package is named before production selection.",
+  "actual": "Parsed as IBM Plex Serif Regular version 2.6. fsType was 0. Selected Latin and Cyrillic code points were present; the selected Greek check did not pass. INR, USD, EUR, GBP, and JPY were present. Base digits had equal widths and a slashed-zero feature was present. IBM's canonical v6.4.2 Regular reports version 3.001, so this mirror file is not accepted as the production desktop file.",
+  "artifacts": [
+    { "pathOrUrl": "../Data/candidate-fonts.json", "description": "Candidate metadata and source caveat derived from this inspection" }
+  ],
+  "notes": "Caveat is intentional: binary inspection succeeded, but source reconciliation failed. Historical hash remains valid evidence for the mirror file.",
+  "followUp": "Audit the complete canonical v6.4.2 style set, choose preview files, compare metrics/outlines, and rerun pairing/application tests."
+}

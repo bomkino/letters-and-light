@@ -1,0 +1,302 @@
+{
+  "version": "0.2.0",
+  "checkedOn": "2026-07-19",
+  "warning": "Curated research candidates only. An inspected mirror file is not automatically the final web or desktop file. Binary coverage is not equivalent to human-reviewed language support.",
+  "fonts": [
+    {
+      "id": "sourceSans3",
+      "family": "Source Sans 3",
+      "status": "candidate",
+      "storyId": "story-source-sans-3",
+      "designer": "Paul D. Hunt",
+      "sourceRepository": "https://github.com/adobe-fonts/source-sans",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/sourcesans3",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "4591e3457ab8be6d70167aa6818922b91e78ab2d",
+        "productionFilesSelected": false,
+        "note": "Inspected mirror file reports the same version number as Adobe's latest tagged release. Static desktop and WOFF2 production files still need explicit selection."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": ["Source"],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-source-sans-3-gf-3-052-roman-vf",
+        "filename": "SourceSans3[wght].ttf",
+        "version": "3.052",
+        "sha256": "042fe2cc0b933e328410d7acbd0aa6a1873dca5aef81875f4bc214b08825c7b9",
+        "fsType": 0,
+        "axes": [
+          { "tag": "wght", "min": 200, "default": 200, "max": 900 }
+        ]
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin", "greek", "cyrillic"],
+      "numerals": { "default": "tabular", "proportionalFeature": true, "tabularFeature": false },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display", "body", "utility"],
+      "blockingTests": ["staticFileSelection", "applicationNaming", "languageCorpus", "platformMatrix"]
+    },
+    {
+      "id": "sourceSerif4",
+      "family": "Source Serif 4",
+      "status": "candidate",
+      "storyId": "story-source-serif-4",
+      "designer": "Frank Grießhammer",
+      "sourceRepository": "https://github.com/adobe-fonts/source-serif",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/sourceserif4",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "7b203a635ebe80801c80f29633d4fc467cd1214e",
+        "productionFilesSelected": false,
+        "note": "Inspected mirror file is version 4.004. Adobe's canonical tagged release is 4.005; final files must come from a reconciled canonical release."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": [],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-source-serif-4-gf-4-004-roman-vf",
+        "filename": "SourceSerif4[opsz,wght].ttf",
+        "version": "4.004",
+        "sha256": "97b2d4da6e3cb494b5a1e66ae176914d852ccabef49e0c02c0df25f3e39aca0b",
+        "fsType": 0,
+        "axes": [
+          { "tag": "wght", "min": 200, "default": 400, "max": 900 },
+          { "tag": "opsz", "min": 8, "default": 20, "max": 60 }
+        ]
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin", "greek", "cyrillic"],
+      "numerals": { "default": "tabular", "proportionalFeature": true, "tabularFeature": true },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display", "body"],
+      "blockingTests": ["opticalSizeAcrossApps", "staticFileSelection", "languageCorpus", "platformMatrix"]
+    },
+    {
+      "id": "ibmPlexSans",
+      "family": "IBM Plex Sans",
+      "status": "candidate",
+      "storyId": "story-ibm-plex-sans",
+      "designer": "Mike Abbink, Bold Monday",
+      "sourceRepository": "https://github.com/IBM/plex",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/ibmplexsans",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "8409f033cd7dee08914990602f0df5f5e70e0c14",
+        "productionFilesSelected": false,
+        "note": "Google Fonts variable packaging and IBM's canonical v6.4.2 static package have different internal versions. Preview and application files require visual and metric reconciliation."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": ["Plex"],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-ibm-plex-sans-gf-3-201-roman-vf",
+        "filename": "IBMPlexSans[wdth,wght].ttf",
+        "version": "3.201",
+        "sha256": "3b031aa4216174205bd8471f88a49b91f093169e9e87bd5262242bc5967fe2e3",
+        "fsType": 0,
+        "axes": [
+          { "tag": "wght", "min": 100, "default": 400, "max": 700 },
+          { "tag": "wdth", "min": 75, "default": 100, "max": 100 }
+        ]
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin", "greek", "cyrillic"],
+      "separateScriptFamiliesPublishedUpstream": ["arabic", "devanagari", "hebrew", "thai", "chinese", "japanese", "korean"],
+      "numerals": { "default": "tabular", "slashedZeroFeature": true },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display", "body", "utility"],
+      "blockingTests": ["widthAxisAcrossApps", "scriptFamilyMatching", "staticFileSelection", "platformMatrix"]
+    },
+    {
+      "id": "bricolageGrotesque",
+      "family": "Bricolage Grotesque",
+      "status": "candidate",
+      "storyId": "story-bricolage-grotesque",
+      "designer": "Mathieu Triay",
+      "sourceRepository": "https://github.com/ateliertriay/bricolage",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "b9f6c712059d72742282ebdf06eadfc264c827f3",
+        "productionFilesSelected": false,
+        "note": "The upstream repository has no tagged release in this audit. Final selection needs a pinned canonical commit or an explicitly accepted pinned mirror file."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": [],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-bricolage-grotesque-gf-1-001-roman-vf",
+        "filename": "BricolageGrotesque[opsz,wdth,wght].ttf",
+        "version": "1.001",
+        "sha256": "413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682",
+        "fsType": 0,
+        "axes": [
+          { "tag": "opsz", "min": 12, "default": 96, "max": 96 },
+          { "tag": "wght", "min": 200, "default": 800, "max": 800 },
+          { "tag": "wdth", "min": 75, "default": 100, "max": 100 }
+        ]
+      },
+      "italicFilePresent": false,
+      "binaryCoverageNotHumanVerified": ["latin"],
+      "numerals": { "default": "proportional", "tabularFeature": true },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display"],
+      "blockingTests": ["displaySpecimen", "staticFileSelection", "applicationNaming", "platformMatrix"]
+    },
+    {
+      "id": "atkinsonHyperlegibleNext",
+      "family": "Atkinson Hyperlegible Next",
+      "status": "candidate",
+      "storyId": "story-atkinson-hyperlegible-next",
+      "designer": "Braille Institute, Applied Design Works, Elliott Scott, Megan Eiswerth, Letters From Sweden",
+      "sourceRepository": "https://github.com/googlefonts/atkinson-hyperlegible-next",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegiblenext",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "66eef70728ca29f28c31cdc5e7947f2c2de73e8d",
+        "productionFilesSelected": false,
+        "note": "Braille Institute is the primary project and story source; the inspected binary is the pinned Google Fonts distribution file."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": [],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-atkinson-next-gf-2-001-roman-vf",
+        "filename": "AtkinsonHyperlegibleNext[wght].ttf",
+        "version": "2.001",
+        "sha256": "5a455d1cfa099b601ab70751bb9673e8fe1854dc4500c80e1a220d0d75e31745",
+        "fsType": 0,
+        "axes": [
+          { "tag": "wght", "min": 200, "default": 400, "max": 800 }
+        ]
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin"],
+      "numerals": { "default": "proportional", "proportionalFeature": true, "tabularFeature": true },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display", "body", "utility"],
+      "blockingTests": ["lowVisionUserReview", "languageCorpus", "staticFileSelection", "platformMatrix"]
+    },
+    {
+      "id": "newsreader",
+      "family": "Newsreader",
+      "status": "candidate",
+      "storyId": "story-newsreader",
+      "designer": "Production Type; Hugues Gentile",
+      "sourceRepository": "https://github.com/productiontype/Newsreader",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/newsreader",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "991ce1de6075188e6b8977a5aa9fcd3610a4e946",
+        "productionFilesSelected": false,
+        "note": "The source project has no tagged release in this audit. Final files need a pinned source commit and comparison with the Google Fonts distribution."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": [],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-newsreader-gf-1-003-roman-vf",
+        "filename": "Newsreader[opsz,wght].ttf",
+        "version": "1.003",
+        "sha256": "8a08d13f8a6c0d51be379a60af84f945f65369a67e509ee3c3bdcc421254d7c1",
+        "fsType": 0,
+        "axes": [
+          { "tag": "wght", "min": 200, "default": 400, "max": 800 },
+          { "tag": "opsz", "min": 6, "default": 18, "max": 72 }
+        ]
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin"],
+      "numerals": { "default": "tabular", "proportionalFeature": true, "tabularFeature": true },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display", "body"],
+      "blockingTests": ["denseProseSpecimen", "opticalSizeAcrossApps", "staticFileSelection", "platformMatrix"]
+    },
+    {
+      "id": "ibmPlexSerif",
+      "family": "IBM Plex Serif",
+      "status": "candidate",
+      "storyId": "story-ibm-plex-serif",
+      "designer": "Mike Abbink, Bold Monday",
+      "sourceRepository": "https://github.com/IBM/plex",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/ibmplexserif",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "b598f5e3ad6849188c9c71714b0fafe11dc88e02",
+        "productionFilesSelected": false,
+        "note": "Inspected Google Fonts static file is version 2.6; IBM's canonical v6.4.2 Regular is version 3.001. The canonical package should lead application testing."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": ["Plex"],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-ibm-plex-serif-gf-2-6-regular",
+        "filename": "IBMPlexSerif-Regular.ttf",
+        "version": "2.6",
+        "sha256": "e882efa9c41949a528ac2369079ec5ef050c1c996bbd0bacce3c3326d44cf80d",
+        "fsType": 0,
+        "axes": []
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin", "cyrillic"],
+      "numerals": { "default": "tabular", "slashedZeroFeature": true },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display", "body"],
+      "blockingTests": ["canonicalFileSelection", "pairingDistinctness", "languageCorpus", "platformMatrix"]
+    },
+    {
+      "id": "fraunces",
+      "family": "Fraunces",
+      "status": "candidate",
+      "storyId": "story-fraunces",
+      "designer": "Undercase Type, Phaedra Charles, Flavia Zimbardi",
+      "sourceRepository": "https://github.com/undercasetype/Fraunces",
+      "googleFontsDirectory": "https://github.com/google/fonts/tree/main/ofl/fraunces",
+      "sourceAudit": {
+        "inspectionProvider": "googleFontsRepository",
+        "sourceCommit": "ac502d8eff76ef4d9477cdcc8ef7d0c84fde5372",
+        "productionFilesSelected": false,
+        "note": "Inspected Google Fonts file reports version 1.000. Upstream development continued after the 1.000 tag; final selection needs an explicit release-versus-commit decision."
+      },
+      "licence": {
+        "spdx": "OFL-1.1",
+        "reservedFontNames": [],
+        "verified": true
+      },
+      "inspectedFile": {
+        "fileId": "ff-fraunces-gf-1-000-roman-vf",
+        "filename": "Fraunces[SOFT,WONK,opsz,wght].ttf",
+        "version": "1.000",
+        "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+        "fsType": 0,
+        "axes": [
+          { "tag": "opsz", "min": 9, "default": 9, "max": 144 },
+          { "tag": "wght", "min": 100, "default": 900, "max": 900 },
+          { "tag": "SOFT", "min": 0, "default": 0, "max": 100 },
+          { "tag": "WONK", "min": 0, "default": 1, "max": 1 }
+        ]
+      },
+      "italicFilePresent": true,
+      "binaryCoverageNotHumanVerified": ["latin"],
+      "numerals": { "default": "proportional", "tabularFeature": false },
+      "currencyGlyphsInspected": ["INR", "USD", "EUR", "GBP", "JPY"],
+      "candidateRoles": ["display"],
+      "blockingTests": ["displayOnlyDiscipline", "axisPresetSelection", "staticFileSelection", "platformMatrix"]
+    }
+  ]
+}

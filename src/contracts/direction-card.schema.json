@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/schemas/letters-light/direction-card.v1.schema.json",
+  "title": "Letters & Light direction card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "projectId", "name", "type", "colour", "selected", "relationship", "previewCopy", "truth"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "projectId": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "type": { "$ref": "./type-recommendation.schema.json" },
+    "colour": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["systems", "recommendation"],
+          "properties": {
+            "systems": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": { "$ref": "../../data/legacy/color-please/palette-system.schema.json" }
+            },
+            "companionSystems": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 3,
+              "items": { "$ref": "../../data/legacy/color-please/palette-system.schema.json" }
+            },
+            "recommendation": { "$ref": "../../data/legacy/color-please/recommendation-output.schema.json" }
+          }
+        }
+      ]
+    },
+    "selected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["typeSystemId", "paletteSystemId"],
+      "properties": {
+        "typeSystemId": { "type": ["string", "null"] },
+        "paletteSystemId": { "type": ["string", "null"] }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headline", "principle", "rulesFired", "guidance", "warnings"],
+      "properties": {
+        "headline": { "type": "string", "minLength": 1 },
+        "principle": { "type": "string", "minLength": 1 },
+        "rulesFired": { "type": "array", "items": { "type": "string" } },
+        "guidance": { "type": "array", "items": { "type": "string" } },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "previewCopy": { "type": "object", "additionalProperties": { "type": "string" } },
+    "truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["typeStatus", "colourStatus", "claims", "limits"],
+      "properties": {
+        "typeStatus": { "enum": ["candidate_demo", "verified_scope", "unavailable"] },
+        "colourStatus": { "enum": ["engine_output", "unavailable"] },
+        "claims": { "type": "array", "items": { "type": "string" } },
+        "limits": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

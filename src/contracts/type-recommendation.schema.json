@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/schemas/letters-light/type-recommendation.v1.schema.json",
+  "title": "Letters & Light type recommendation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "mode",
+    "dataStatus",
+    "outcome",
+    "headline",
+    "recommendations",
+    "trace",
+    "exclusions",
+    "blockers",
+    "nextActions"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "mode": { "enum": ["production", "candidate_demo"] },
+    "dataStatus": { "enum": ["public_ready", "candidate_only", "mixed"] },
+    "outcome": { "enum": ["recommendation", "boundary", "unsupported"] },
+    "headline": { "type": "string", "minLength": 1 },
+    "recommendations": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["systemId", "name", "answerRole", "status", "reason", "caveats", "roles", "oneThingNotToDo"],
+        "properties": {
+          "systemId": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "answerRole": { "enum": ["ourPick", "quieter", "moreCharacter", "alternative"] },
+          "status": { "enum": ["candidate", "testing", "verified", "limited", "rejected", "stale"] },
+          "reason": { "type": "string", "minLength": 1 },
+          "caveats": { "type": "array", "items": { "type": "string" } },
+          "roles": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["display", "body", "utility"],
+            "properties": {
+              "display": { "$ref": "#/$defs/fontRole" },
+              "body": { "$ref": "#/$defs/fontRole" },
+              "utility": { "$ref": "#/$defs/fontRole" }
+            }
+          },
+          "oneThingNotToDo": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "trace": { "type": "object" },
+    "exclusions": { "type": "array" },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "nextActions": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "fontRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontId"],
+      "properties": { "fontId": { "type": "string", "minLength": 1 } }
+    }
+  }
+}

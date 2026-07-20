@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/type-set/evidence-record.schema.json",
+  "title": "Type Set evidence record",
+  "type": "object",
+  "required": ["id", "kind", "status", "testedOn", "tester", "subjects", "input", "steps", "expected", "actual"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "kind": {
+      "enum": ["fontBinary", "languageCorpus", "application", "specimen", "accessibility", "designerReview", "userTest"]
+    },
+    "status": { "enum": ["pass", "caveat", "fail"] },
+    "testedOn": { "type": "string", "format": "date" },
+    "expiresOn": { "type": "string", "format": "date" },
+    "tester": {
+      "type": "object",
+      "required": ["role"],
+      "properties": {
+        "role": { "type": "string" },
+        "nameOrId": { "type": "string" },
+        "languageFluency": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    },
+    "subjects": {
+      "type": "object",
+      "properties": {
+        "fontIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "systemIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "fileIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "fileHashes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "operatingSystem": { "type": "string" },
+        "operatingSystemVersion": { "type": "string" },
+        "application": { "type": "string" },
+        "applicationVersion": { "type": "string" },
+        "browser": { "type": "string" },
+        "browserVersion": { "type": "string" },
+        "device": { "type": "string" },
+        "networkState": { "enum": ["online", "offline", "notApplicable"] }
+      },
+      "additionalProperties": false
+    },
+    "input": { "type": "string", "minLength": 1 },
+    "steps": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "expected": { "type": "string", "minLength": 1 },
+    "actual": { "type": "string", "minLength": 1 },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pathOrUrl"],
+        "properties": {
+          "pathOrUrl": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": { "type": "string" },
+    "followUp": { "type": "string" }
+  },
+  "additionalProperties": false
+}

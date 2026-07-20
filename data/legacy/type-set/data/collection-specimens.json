@@ -1,0 +1,82 @@
+{
+  "version": "0.1.0",
+  "updatedOn": "2026-07-20",
+  "status": "editorial-draft",
+  "licenceState": "Propose CC0-1.0 before public release; not yet public production copy.",
+  "contentNotice": "All projects, names, organisations, claims, and figures in these specimens are invented for typographic testing.",
+  "rule": "These samples introduce individual systems. Recommendation comparisons use shared user or artifact copy instead.",
+  "specimens": [
+    {
+      "id": "collection-specimen-plainspoken",
+      "systemId": "ts01-clear-workhorse",
+      "title": "Put the answer on the slide.",
+      "body": "Lead with the decision. Keep the evidence close. Move the supporting detail to the appendix so the room can stay with the argument.",
+      "difficultLine": "Maya Chen, Jordan Lee & Alex Rivera — July 18, 2026 · $52,000 · 38%",
+      "metric": "38%",
+      "metricLabel": "less copy in the revised deck"
+    },
+    {
+      "id": "collection-specimen-human-machine",
+      "systemId": "ts02-data-workhorse",
+      "title": "The numbers are certain. The future isn’t.",
+      "body": "The model can describe what happened. People still decide what happens next. Keep the assumptions beside the forecast, the source beside the claim, and one honest unknown in the room.",
+      "difficultLine": "Q3 forecast — $1.4M · 1,024 accounts · ±2.8% · 2026–2028",
+      "metric": "1,024",
+      "metricLabel": "illustrative active accounts"
+    },
+    {
+      "id": "collection-specimen-page-screen",
+      "systemId": "ts03-editorial-pair",
+      "title": "We inherit the house at low tide.",
+      "body": "Mara returns to the island with one key, two debts, and no intention of staying. By morning, the sea has uncovered a road nobody remembers building—and the village has begun to remember her differently.",
+      "difficultLine": "Mara Alvarez · Block Island, 1987–2026 · ‘You came back for the wrong ghost.’",
+      "metric": "92 min",
+      "metricLabel": "fictional project running time"
+    },
+    {
+      "id": "collection-specimen-rebuilt",
+      "systemId": "ts04-rebuilt",
+      "title": "Nothing matched. That was the beginning.",
+      "body": "The film moves through borrowed rooms, half-finished inventions, and the small ceremonies people make when the official ones have failed them. The camera stays close enough to catch the repairs.",
+      "difficultLine": "Amal + Éloïse — Detroit / Marseille · 4:37 · $18,500 production allowance",
+      "metric": "04:37",
+      "metricLabel": "fictional opening sequence"
+    },
+    {
+      "id": "collection-specimen-clear-sightline",
+      "systemId": "ts05-clear-sightline",
+      "title": "Nothing important should disappear in the last row.",
+      "body": "A live slide has one job: help the room stay with you. Use fewer words, name the evidence plainly, and give every person enough time and space to read before the conversation moves on.",
+      "difficultLine": "Anaïs, O’Connor & Sławomir — September 7, 2026 · $875,000 · 0O / 1lI",
+      "metric": "24 pt",
+      "metricLabel": "body-size test starting point"
+    },
+    {
+      "id": "collection-specimen-long-read",
+      "systemId": "ts06-long-read",
+      "title": "The river knows the route home.",
+      "body": "For thirty years, Lena has mapped every flood that entered the valley. When a new dam promises safety at the cost of the last town upstream, her careful archive becomes evidence, inheritance, and a reason to disobey.",
+      "difficultLine": "Lena Warren · Baton Rouge, 1996–2026 · $3.2M · 30°27′14″N",
+      "metric": "30 years",
+      "metricLabel": "fictional archive span"
+    },
+    {
+      "id": "collection-specimen-one-family-two-voices",
+      "systemId": "ts07-one-family-two-voices",
+      "title": "Evidence first. Then an opinion worth having.",
+      "body": "The research does not ask for certainty. It asks us to show the pattern, name the gap, and make a decision someone can revise when better evidence arrives. Confidence without a source is just expensive posture.",
+      "difficultLine": "N = 1,248 · Austin + Bogotá · 62% / 38% · margin of error ±3.1%",
+      "metric": "1,248",
+      "metricLabel": "illustrative research participants"
+    },
+    {
+      "id": "collection-specimen-soft-edges",
+      "systemId": "ts08-soft-edges",
+      "title": "Serious work can arrive smiling.",
+      "body": "The organisation is growing, but it does not need to harden. Keep the welcome specific, the rules legible, and enough oddness in the room for people to recognise themselves there.",
+      "difficultLine": "Aïcha, Renée & João — 14 cities · $240K · 86% returned the following year",
+      "metric": "14 cities",
+      "metricLabel": "fictional programme reach"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "FB-004-bricolage-grotesque-2026-07-19",
+  "kind": "fontBinary",
+  "status": "pass",
+  "testedOn": "2026-07-19",
+  "tester": {
+    "role": "automated fontTools inspection with human result review"
+  },
+  "subjects": {
+    "fontIds": ["bricolageGrotesque"],
+    "fileIds": ["ff-bricolage-grotesque-gf-1-001-roman-vf"],
+    "fileHashes": ["413e7357809ddd12fd80a96a8a396de0e401638d4acd3cb3e37532f0472ac682"]
+  },
+  "environment": {
+    "operatingSystem": "macOS",
+    "operatingSystemVersion": "27.0",
+    "application": "fontTools",
+    "applicationVersion": "4.63.0",
+    "device": "arm64 Mac",
+    "networkState": "online"
+  },
+  "input": "BricolageGrotesque[opsz,wdth,wght].ttf from Google Fonts commit b9f6c712059d72742282ebdf06eadfc264c827f3.",
+  "steps": [
+    "Download the exact TTF from the pinned Google Fonts source commit.",
+    "Calculate SHA-256.",
+    "Inspect name, version, OS/2 fsType, fvar axes, cmap, GSUB/GPOS feature tags, and required currency/punctuation code points.",
+    "Compare advance widths of base digits zero through nine.",
+    "Inspect Google Fonts family directory for a separate italic file."
+  ],
+  "expected": "File parses cleanly; identity and version are readable; embedding flag, axes, binary coverage, OpenType features, currency glyphs, numeral widths, and italic-file presence can be recorded.",
+  "actual": "Parsed as Bricolage Grotesque version 1.001. SHA-256 matched candidate record. fsType was 0. Optical-size axis was 12–96, weight 200–800, and width 75–100. Inspected coverage supports a Latin-only candidate claim. INR, USD, EUR, GBP, JPY, bullet, en dash, and em dash were present. Base digits were proportional; a tabular figure feature was present. No separate italic file appeared in the current Google Fonts family directory.",
+  "artifacts": [
+    {
+      "pathOrUrl": "../Data/candidate-fonts.json",
+      "description": "Candidate metadata derived from this inspection"
+    }
+  ],
+  "notes": "Pass covers binary inspection only. It does not establish language support beyond reviewed Latin evidence, visual suitability, application behaviour, static file choice, or human typography review."
+}

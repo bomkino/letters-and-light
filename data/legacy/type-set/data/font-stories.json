@@ -1,0 +1,170 @@
+{
+  "version": "0.1.0",
+  "updatedOn": "2026-07-19",
+  "status": "editorial-draft-primary-sourced",
+  "warning": "Origin facts come from named primary sources. pitch.dogView and whyHere are editorial judgments, not historical facts or recommendation evidence.",
+  "stories": [
+    {
+      "id": "story-source-sans-3",
+      "fontId": "sourceSans3",
+      "creditLine": "Designed by Paul D. Hunt at Adobe Originals, with later language work shaped through consultation and community use.",
+      "people": [
+        { "name": "Paul D. Hunt", "role": "type designer" },
+        { "name": "Andrew Keith Strauss", "role": "Na-Dené language consultation named by Adobe" }
+      ],
+      "origin": "Adobe's first open-source type family. The third major version expanded Greek and Cyrillic coverage and continued a long process of revising the family through real language needs.",
+      "pitchDogView": "It does not demand applause. Its humanity lives in open shapes, useful italics, and the feeling that ordinary information has been considered rather than styled.",
+      "whyHere": "A low-complexity deck system and a quiet body/utility partner for more expressive faces.",
+      "limits": "Neutrality can become anonymity. Platform naming, static files, and every claimed language still require tests.",
+      "primarySources": [
+        { "label": "Adobe: What's new in Source Sans 3", "url": "https://blog.adobe.com/en/publish/2020/11/30/whats-new-in-source-sans-3" },
+        { "label": "Adobe source repository", "url": "https://github.com/adobe-fonts/source-sans" }
+      ],
+      "supportUrl": "https://github.com/adobe-fonts/source-sans",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-source-serif-4",
+      "fontId": "sourceSerif4",
+      "creditLine": "Designed by Frank Grießhammer at Adobe Originals, with named collaborators across optical sizes and Greek italics.",
+      "people": [
+        { "name": "Frank Grießhammer", "role": "type designer" },
+        { "name": "Reymund Schroeder", "role": "caption-size design contribution" },
+        { "name": "Thomas Thiemich", "role": "display-size design contribution" },
+        { "name": "Irene Vlachou", "role": "Greek italics contribution" },
+        { "name": "Emilios Theofanous", "role": "Greek italics contribution" }
+      ],
+      "origin": "A contemporary interpretation of Pierre-Simon Fournier's transitional types, conceived as a companion to Source Sans. Optical sizes let the same family become sturdier in captions and finer in display work.",
+      "pitchDogView": "Bookish without putting on a powdered wig. Its optical sizes make the useful point that small type and large type are different physical jobs.",
+      "whyHere": "Editorial titles and measured prose in film, treatment, and leave-behind work, paired with Source Sans for practical text.",
+      "limits": "Optical-size behaviour varies by application; the inspected mirror file is not the latest canonical release.",
+      "primarySources": [
+        { "label": "Adobe: Source Serif gets optical sizes", "url": "https://blog.adobe.com/en/publish/2021/03/04/source-serif-gets-optical-sizes" },
+        { "label": "Adobe source repository", "url": "https://github.com/adobe-fonts/source-serif" }
+      ],
+      "supportUrl": "https://github.com/adobe-fonts/source-serif",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-ibm-plex-sans",
+      "fontId": "ibmPlexSans",
+      "creditLine": "Creative direction by Mike Abbink; type direction and design with Bold Monday; extended by an international team of script specialists and engineers.",
+      "people": [
+        { "name": "Mike Abbink", "role": "creative direction and design" },
+        { "name": "Paul van der Laan", "role": "type direction and design" },
+        { "name": "Pieter van Rosmalen", "role": "type direction and design" }
+      ],
+      "origin": "IBM created Plex to replace borrowed corporate neutrality with a family shaped around its own history: a tension between human and machine, rational and emotional. The wider project includes many scripts made by named specialists.",
+      "pitchDogView": "It has the confidence of a technical drawing with just enough warmth left in the pencil line.",
+      "whyHere": "A one-family route for data, strategy, evidence, and collaborative decks.",
+      "limits": "IBM and Google Fonts packages diverge. Separate script families are separate files and cannot be claimed as one automatic multilingual system.",
+      "primarySources": [
+        { "label": "IBM Design: Plex story", "url": "https://www.ibm.com/design/impact/plex/" },
+        { "label": "IBM Plex design team and specifications", "url": "https://www.ibm.com/plex/specs/" },
+        { "label": "IBM source repository", "url": "https://github.com/IBM/plex" }
+      ],
+      "supportUrl": "https://github.com/IBM/plex",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-bricolage-grotesque",
+      "fontId": "bricolageGrotesque",
+      "creditLine": "Designed, spaced, and kerned by Mathieu Triay, with named QA, language advice, collaborators, and Google funding.",
+      "people": [
+        { "name": "Mathieu Triay", "role": "type designer" },
+        { "name": "Emma Marichal", "role": "quality assurance" },
+        { "name": "Nhung Nguyen", "role": "Vietnamese diacritics advice" },
+        { "name": "Jérémy Landes", "role": "designer of Mayenne Sans, the open-source starting point" }
+      ],
+      "origin": "Triay describes the face through migration, hybrid identity, French and British grotesque histories, and rebuilding from existing materials. He dedicated it to his grandfather, Edgard Triay.",
+      "pitchDogView": "The letters feel inherited, modified, and still slightly restless. That is more interesting than a generic label like bold or quirky.",
+      "whyHere": "Short display work that needs cultural texture and movement, held in check by a quiet body face.",
+      "limits": "No italic in the inspected family; display discipline and Latin-only public scope until review.",
+      "primarySources": [
+        { "label": "Mathieu Triay: Bricolage Grotesque story and specimen", "url": "https://ateliertriay.github.io/bricolage/" },
+        { "label": "Bricolage source repository", "url": "https://github.com/ateliertriay/bricolage" }
+      ],
+      "supportUrl": "https://ateliertriay.github.io/bricolage/",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-atkinson-hyperlegible-next",
+      "fontId": "atkinsonHyperlegibleNext",
+      "creditLine": "A Braille Institute project made with Applied Design Works, Elliott Scott, Megan Eiswerth, and Letters From Sweden.",
+      "people": [
+        { "name": "J. Robert Atkinson", "role": "Braille Institute founder and namesake" },
+        { "name": "Elliott Scott", "role": "design contributor named in project metadata" },
+        { "name": "Megan Eiswerth", "role": "design contributor named in project metadata" }
+      ],
+      "origin": "The original family was built around distinguishing commonly confused letterforms for readers with low vision. The 2025 Next release expanded the weights, italics, and language reach.",
+      "pitchDogView": "Its open counters and deliberately different shapes make clarity visible without making the page feel clinical.",
+      "whyHere": "A candidate for projection, phone viewing, names, and practical one-family hierarchy.",
+      "limits": "A typeface cannot make a deck accessible by itself, and one legibility strategy does not serve every reader. Low-vision users must review it.",
+      "primarySources": [
+        { "label": "Braille Institute: font family and design principles", "url": "https://www.brailleinstitute.org/freefont/" },
+        { "label": "Braille Institute: 2025 Next release", "url": "https://www.brailleinstitute.org/about-us/news/braille-institute-launches-enhanced-atkinson-hyperlegible-font-to-make-reading-easier/" },
+        { "label": "Atkinson Hyperlegible Next source repository", "url": "https://github.com/googlefonts/atkinson-hyperlegible-next" }
+      ],
+      "supportUrl": "https://www.brailleinstitute.org/freefont/",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-newsreader",
+      "fontId": "newsreader",
+      "creditLine": "Designed at Production Type by Hugues Gentile; commissioned by Google Fonts.",
+      "people": [
+        { "name": "Hugues Gentile", "role": "type designer" }
+      ],
+      "origin": "An open-source serif made for continuous on-screen reading in content-rich environments, rather than a print face merely placed on a screen.",
+      "pitchDogView": "It brings a patient reading rhythm. That matters in a synopsis or treatment where the paragraph, not the title, has to hold attention.",
+      "whyHere": "Longer prose and leave-behind reading, paired with Source Sans for charts, labels, and navigation.",
+      "limits": "It still needs deck-width, optical-size, phone, data, and application tests. A reading brief does not automatically prove presentation performance.",
+      "primarySources": [
+        { "label": "Production Type: Newsreader", "url": "https://productiontype.com/font/newsreader/newsreader-display" },
+        { "label": "Newsreader source repository", "url": "https://github.com/productiontype/Newsreader" }
+      ],
+      "supportUrl": "https://productiontype.com/font/newsreader/newsreader-display",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-ibm-plex-serif",
+      "fontId": "ibmPlexSerif",
+      "creditLine": "Part of the Plex superfamily directed by Mike Abbink and Bold Monday, with a large international design and engineering team.",
+      "people": [
+        { "name": "Mike Abbink", "role": "creative direction and design" },
+        { "name": "Paul van der Laan", "role": "type direction and design" },
+        { "name": "Pieter van Rosmalen", "role": "type direction and design" }
+      ],
+      "origin": "Plex Serif extends IBM's human-and-machine idea into a more literary voice while remaining part of the same designed family as Plex Sans.",
+      "pitchDogView": "It changes temperature without changing citizenship. That makes the serif/sans relationship feel deliberate rather than decorated.",
+      "whyHere": "A lower-risk editorial pairing for research, strategy, and evidence-led decks.",
+      "limits": "The Google Fonts file inspected here trails IBM's canonical package. Pairing and application tests must use reconciled files.",
+      "primarySources": [
+        { "label": "IBM Design Language: Plex family", "url": "https://www.ibm.com/design/language/typography/typeface/" },
+        { "label": "IBM Plex design team and specifications", "url": "https://www.ibm.com/plex/specs/" },
+        { "label": "IBM source repository", "url": "https://github.com/IBM/plex" }
+      ],
+      "supportUrl": "https://github.com/IBM/plex",
+      "reviewedOn": "2026-07-19"
+    },
+    {
+      "id": "story-fraunces",
+      "fontId": "fraunces",
+      "creditLine": "Designed by Undercase Type, Phaedra Charles, and Flavia Zimbardi.",
+      "people": [
+        { "name": "Phaedra Charles", "role": "type designer" },
+        { "name": "Flavia Zimbardi", "role": "type designer" }
+      ],
+      "origin": "A variable soft-serif display family that revisits an underappreciated strand of early twentieth-century type. Its optical size, softness, and wonk axes make that history adjustable rather than embalmed.",
+      "pitchDogView": "Warm, peculiar, and capable of looking both assured and slightly unruly. It gives a title a body instead of merely giving it weight.",
+      "whyHere": "An expressive serif route clearly different from Bricolage, paired with a quiet sans for everything practical.",
+      "limits": "Display only in this collection. Proportional numerals and strong formal character make it unsuitable for ordinary tables or dense body copy without contrary evidence.",
+      "primarySources": [
+        { "label": "Undercase Type: Fraunces story and specimen", "url": "https://fraunces.undercase.xyz/" },
+        { "label": "Fraunces source repository", "url": "https://github.com/undercasetype/Fraunces" }
+      ],
+      "supportUrl": "https://fraunces.undercase.xyz/",
+      "reviewedOn": "2026-07-19"
+    }
+  ]
+}

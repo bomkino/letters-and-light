@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "1.0.0",
+  "product": "Color, Please",
+  "method": "ordered_gates",
+  "principle": "Recommend the safest useful system for the stated viewing conditions, then explain the trade-off. Never disguise taste as a numerical truth.",
+  "quickPath": {
+    "actionLabel": "Show me a sensible first pass",
+    "resultStatus": "sensible_first_pass",
+    "allowWithoutAnsweredQuestions": true,
+    "discloseEveryDefault": true
+  },
+  "defaults": {
+    "delivery": "unknown",
+    "contentLoad": "unknown",
+    "sourceRelationship": "unknown",
+    "baseMode": "decide",
+    "dataNeed": "unknown"
+  },
+  "coreQuestions": [
+    {
+      "id": "delivery",
+      "prompt": "Where will this be seen most?",
+      "default": "unknown",
+      "options": ["live_room", "screen_share", "sent_pdf", "phone", "print", "mixed", "unknown"],
+      "labels": {
+        "live_room": "Projected live",
+        "screen_share": "Presented on screens",
+        "sent_pdf": "Read as a PDF",
+        "phone": "Often on a phone",
+        "print": "Printed or handed out",
+        "mixed": "A bit of everything",
+        "unknown": "Not sure yet"
+      }
+    },
+    {
+      "id": "contentLoad",
+      "prompt": "How much must these pages carry?",
+      "default": "unknown",
+      "options": ["spare", "balanced", "dense", "custom", "unknown"],
+      "labels": {
+        "spare": "Mostly images and short statements",
+        "balanced": "Images plus moderate copy",
+        "dense": "Longer explanations or evidence",
+        "custom": "Use my copy to decide",
+        "unknown": "Not sure"
+      }
+    },
+    {
+      "id": "sourceRelationship",
+      "prompt": "How closely should the deck follow this image?",
+      "default": "unknown",
+      "options": ["reference_is_identity", "protect_one", "starting_point", "surprise_me_carefully", "unknown"],
+      "labels": {
+        "reference_is_identity": "Stay close; this image is the world",
+        "protect_one": "Keep one important color",
+        "starting_point": "Use it as a starting point",
+        "surprise_me_carefully": "Show a considered interpretation",
+        "unknown": "Not sure"
+      }
+    },
+    {
+      "id": "baseMode",
+      "prompt": "Should most slides be light or dark?",
+      "default": "decide",
+      "options": ["light", "dark", "both", "decide"],
+      "labels": {
+        "light": "Mostly light",
+        "dark": "Mostly dark",
+        "both": "Show both",
+        "decide": "Decide from image and use"
+      }
+    },
+    {
+      "id": "dataNeed",
+      "prompt": "Will colour need to carry charts or comparisons?",
+      "default": "unknown",
+      "options": ["none", "categorical", "sequential", "diverging", "unknown"],
+      "labels": {
+        "none": "No",
+        "categorical": "Separate categories",
+        "sequential": "Show low to high",
+        "diverging": "Show above and below a midpoint",
+        "unknown": "Maybe"
+      }
+    }
+  ],
+  "conditionalInputs": [
+    {
+      "id": "protectedSource",
+      "askWhen": { "sourceRelationship": "protect_one" },
+      "prompt": "Choose the colour or region we must not lose.",
+      "methods": ["cluster", "point", "region", "exact_colour"]
+    },
+    {
+      "id": "transparencyBase",
+      "askWhen": { "sourceHasTransparency": true },
+      "prompt": "What background should transparent pixels be judged against?"
+    },
+    {
+      "id": "quickCopy",
+      "askWhen": { "contentLoad": "custom" },
+      "prompt": "Paste the copy you have so we can measure the real pressure before recommending.",
+      "fields": ["headline", "body", "subheadline"],
+      "minimumPopulatedFields": 1,
+      "measurementRequires": [
+        "templateVersion",
+        "fontAssetHash",
+        "breakpoint",
+        "populatedFields",
+        "lineCounts",
+        "occupiedBounds",
+        "minimumSizeOverflow",
+        "fitStatus"
+      ],
+      "skippableTo": { "contentLoad": "unknown" }
+    },
+    {
+      "id": "dataCount",
+      "askWhenAny": [
+        { "dataNeed": "categorical" },
+        { "dataNeed": "sequential" },
+        { "dataNeed": "diverging" }
+      ],
+      "prompt": "How many categories or steps must remain distinct?",
+      "limits": { "minimum": 2, "recommendedMaximum": 6, "hardMaximum": 12 }
+    },
+    {
+      "id": "divergingMidpoint",
+      "askWhen": { "dataNeed": "diverging" },
+      "prompt": "What does the midpoint mean?",
+      "examples": ["zero", "target", "no change", "average"]
+    }
+  ],
+  "orderedGates": [
+    "input_viability",
+    "protected_source",
+    "non_negotiable_contrast",
+    "delivery_risk",
+    "content_density",
+    "source_fidelity",
+    "base_mode",
+    "data_requirements",
+    "minimum_intervention",
+    "meaningful_difference",
+    "tie_break"
+  ],
+  "strategies": {
+    "faithful": "Keeps the closest viable relationship to the image, accepting more expressive colour and some editing pressure.",
+    "quieter": "Reduces chroma or variety so text, repeated layouts, and denser information have room.",
+    "higher_contrast": "Prioritises legibility under poor viewing conditions, projection, small screens, or uncertain environments."
+  },
+  "rules": [
+    {
+      "id": "R00_UNCERTAIN_INPUTS",
+      "priority": 5,
+      "whenAny": [
+        { "delivery": "unknown" },
+        { "contentLoad": "unknown" },
+        { "sourceRelationship": "unknown" },
+        { "dataNeed": "unknown" }
+      ],
+      "recommend": { "status": "sensible_first_pass", "includeUncertainty": true },
+      "reason": "Unknown context produces a useful first pass with visible assumptions, not a confident best-fit claim."
+    },
+    {
+      "id": "R01_BLOCK_UNREADABLE_CORE_PAIR",
+      "priority": 10,
+      "when": { "viableTextBackgroundPair": false },
+      "recommend": { "action": "derive_companion", "strategy": "higher_contrast" },
+      "reason": "The source does not contain a reliable text/background pair. A derived companion is more honest than pretending it does.",
+      "warning": "Derived colours must remain visibly marked as derived."
+    },
+    {
+      "id": "R02_HOSTILE_VIEWING",
+      "priority": 20,
+      "whenAny": [
+        { "delivery": "live_room" },
+        { "delivery": "phone" }
+      ],
+      "recommend": { "strategy": "higher_contrast" },
+      "reason": "Projection and small screens punish subtle contrast first."
+    },
+    {
+      "id": "R03_MIXED_DELIVERY",
+      "priority": 30,
+      "when": { "delivery": "mixed" },
+      "recommend": { "strategy": "quieter", "companion": "higher_contrast" },
+      "reason": "One expressive system rarely survives every surface. Start controlled; keep a contrast-first companion."
+    },
+    {
+      "id": "R04_PRINT_CAUTION",
+      "priority": 35,
+      "when": { "delivery": "print" },
+      "recommend": { "strategy": "quieter", "preferredMode": "light" },
+      "reason": "A light, restrained system is less wasteful and usually more stable in ordinary office printing.",
+      "warning": "On-screen sRGB preview is not a print proof."
+    },
+    {
+      "id": "R05_DENSE_INFORMATION",
+      "priority": 40,
+      "when": { "contentLoad": "dense" },
+      "recommend": { "strategy": "quieter" },
+      "reason": "Dense slides need hierarchy and repeatability more than maximum palette drama."
+    },
+    {
+      "id": "R05A_CUSTOM_COPY",
+      "priority": 45,
+      "when": { "contentLoad": "custom" },
+      "recommend": {
+        "requireMeasuredQuickCopy": true,
+        "deriveEffectiveContentLoad": {
+          "comfortable_without_body": "spare",
+          "comfortable_with_body": "balanced",
+          "tight": "dense",
+          "does_not_fit": "dense"
+        }
+      },
+      "reason": "A custom-copy recommendation must use measured layout pressure before it is presented as best fit."
+    },
+    {
+      "id": "R06_SPARSE_IDENTITY",
+      "priority": 50,
+      "whenAll": [
+        { "contentLoad": "spare" },
+        { "sourceRelationship": "reference_is_identity" }
+      ],
+      "recommend": { "strategy": "faithful" },
+      "reason": "Sparse slides can carry a closer, more expressive relationship to the source."
+    },
+    {
+      "id": "R07_PROTECT_SOURCE",
+      "priority": 55,
+      "when": { "sourceRelationship": "protect_one" },
+      "recommend": { "constraint": "preserve_protected_cluster" },
+      "reason": "The selected source colour is a declared constraint, not a hint."
+    },
+    {
+      "id": "R08_STARTING_POINT",
+      "priority": 60,
+      "when": { "sourceRelationship": "starting_point" },
+      "recommend": { "strategy": "quieter" },
+      "reason": "Preserve the relationship, not every literal swatch."
+    },
+    {
+      "id": "R09_CAREFUL_SURPRISE",
+      "priority": 65,
+      "when": { "sourceRelationship": "surprise_me_carefully" },
+      "recommend": { "strategy": "quieter", "allowConstrainedVariation": true },
+      "reason": "Variation may explore nearby systems, but locks, viability, and source provenance remain intact."
+    },
+    {
+      "id": "R10_EXPLICIT_MODE",
+      "priority": 70,
+      "whenAny": [
+        { "baseMode": "light" },
+        { "baseMode": "dark" }
+      ],
+      "recommend": { "preferredModeFromAnswer": true },
+      "reason": "An explicit working context outranks an aesthetic guess."
+    },
+    {
+      "id": "R11_BOTH_MODES",
+      "priority": 75,
+      "when": { "baseMode": "both" },
+      "recommend": { "generateCompanionModes": true },
+      "reason": "Light and dark are separate systems with checked role pairs, not a colour inversion."
+    },
+    {
+      "id": "R12_DECIDE_MODE",
+      "priority": 80,
+      "when": { "baseMode": "decide" },
+      "recommend": { "chooseByDeliveryAndViability": true, "generateCompanionMode": true },
+      "reason": "Choose the safer primary mode from context; keep the other available for inspection."
+    },
+    {
+      "id": "R13_CATEGORICAL_DATA",
+      "priority": 90,
+      "when": { "dataNeed": "categorical" },
+      "recommend": { "dataSystem": "qualitative", "testPairwiseDistinction": true },
+      "reason": "Categories require separable peers; the deck accents alone are not evidence of that."
+    },
+    {
+      "id": "R14_SEQUENTIAL_DATA",
+      "priority": 91,
+      "when": { "dataNeed": "sequential" },
+      "recommend": { "dataSystem": "sequential", "enforceMonotonicLightness": true },
+      "reason": "Ordered magnitude needs an ordered visual progression."
+    },
+    {
+      "id": "R15_DIVERGING_DATA",
+      "priority": 92,
+      "when": { "dataNeed": "diverging" },
+      "recommend": { "dataSystem": "diverging", "requireMeaningfulMidpoint": true },
+      "reason": "A diverging scale only makes sense around a real midpoint."
+    }
+  ],
+  "tieBreak": {
+    "defaultStrategy": "quieter",
+    "askAtMostOneQuestion": true,
+    "question": "If one thing must win, should the deck stay closer to the image or work more safely in the situation you described?",
+    "options": ["closer_to_image", "safer_to_read"],
+    "fallback": "safer_to_read"
+  },
+  "variation": {
+    "label": "Try a nearby version",
+    "forbiddenLabel": "Randomise",
+    "preserve": ["locked_roles", "protected_source", "text_viability", "data_semantics"],
+    "allowedMoves": [
+      "swap_eligible_accent_clusters",
+      "move_lightness_within_viable_band",
+      "reduce_or_restore_chroma_within_gamut",
+      "rotate_to_next_deterministic_candidate"
+    ],
+    "seed": "workingPixelHash + crop + answers + locks + variationIndex + engineVersion"
+  }
+}

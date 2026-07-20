@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/schemas/color-please/project-file.v1.schema.json",
+  "title": "Color, Please local project file",
+  "description": "Portable local state without source or preview image bytes. Import requires source re-selection and hash verification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "engineVersion",
+    "projectId",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "source",
+    "answers",
+    "protectedSelections",
+    "selectedSystemId",
+    "systems",
+    "recommendation",
+    "edits",
+    "preview",
+    "exportDisclosure"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "engineVersion": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "projectId": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "revision": { "type": "integer", "minimum": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "projectName": { "type": ["string", "null"], "maxLength": 120 },
+    "source": { "$ref": "#/$defs/sourceReference" },
+    "answers": { "$ref": "#/$defs/answers" },
+    "protectedSelections": {
+      "type": "array",
+      "maxItems": 20,
+      "items": { "$ref": "#/$defs/protectedSelection" }
+    },
+    "selectedSystemId": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "systems": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
+      "items": { "$ref": "https://pitch.dog/schemas/color-please/palette-system.v1.schema.json" }
+    },
+    "recommendation": { "$ref": "https://pitch.dog/schemas/color-please/recommendation-output.v1.schema.json" },
+    "edits": {
+      "type": "array",
+      "maxItems": 500,
+      "items": { "$ref": "#/$defs/edit" }
+    },
+    "preview": { "$ref": "#/$defs/preview" },
+    "exportDisclosure": { "$ref": "#/$defs/exportDisclosure" }
+  },
+  "$defs": {
+    "crop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+        "y": { "type": "number", "minimum": 0, "maximum": 1 },
+        "width": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "height": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }
+      }
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceFileHash",
+        "workingPixelHash",
+        "hashAlgorithm",
+        "normalizationVersion",
+        "workingWidth",
+        "workingHeight",
+        "crop",
+        "transparencyGround",
+        "containsImageBytes",
+        "containsOriginalFilename"
+      ],
+      "properties": {
+        "sourceFileHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "workingPixelHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "hashAlgorithm": { "const": "SHA-256" },
+        "normalizationVersion": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "workingWidth": { "type": "integer", "minimum": 1 },
+        "workingHeight": { "type": "integer", "minimum": 1 },
+        "crop": { "$ref": "#/$defs/crop" },
+        "transparencyGround": {
+          "oneOf": [
+            { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+            { "type": "null" }
+          ]
+        },
+        "containsImageBytes": { "const": false },
+        "containsOriginalFilename": { "const": false }
+      }
+    },
+    "answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["delivery", "contentLoad", "sourceRelationship", "baseMode", "dataNeed"],
+      "properties": {
+        "delivery": {
+          "type": "string",
+          "enum": ["live_room", "screen_share", "sent_pdf", "phone", "print", "mixed", "unknown"]
+        },
+        "contentLoad": {
+          "type": "string",
+          "enum": ["spare", "balanced", "dense", "custom", "unknown"]
+        },
+        "sourceRelationship": {
+          "type": "string",
+          "enum": ["reference_is_identity", "protect_one", "starting_point", "surprise_me_carefully", "unknown"]
+        },
+        "baseMode": {
+          "type": "string",
+          "enum": ["light", "dark", "both", "decide"]
+        },
+        "dataNeed": {
+          "type": "string",
+          "enum": ["none", "categorical", "sequential", "diverging", "unknown"]
+        },
+        "dataCount": { "type": ["integer", "null"], "minimum": 2, "maximum": 12 },
+        "divergingMidpoint": { "type": ["string", "null"], "maxLength": 120 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "dataNeed": { "enum": ["categorical", "sequential", "diverging"] } },
+            "required": ["dataNeed"]
+          },
+          "then": {
+            "required": ["dataCount"],
+            "properties": { "dataCount": { "type": "integer", "minimum": 2, "maximum": 12 } }
+          }
+        },
+        {
+          "if": { "properties": { "dataNeed": { "const": "diverging" } }, "required": ["dataNeed"] },
+          "then": {
+            "required": ["divergingMidpoint"],
+            "properties": { "divergingMidpoint": { "type": "string", "minLength": 1, "maxLength": 120 } }
+          }
+        }
+      ]
+    },
+    "protectedSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "value"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["cluster", "point", "region", "exact_colour"] },
+        "value": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "cluster" } }, "required": ["kind"] },
+          "then": { "properties": { "value": { "$ref": "#/$defs/clusterSelection" } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "point" } }, "required": ["kind"] },
+          "then": { "properties": { "value": { "$ref": "#/$defs/pointSelection" } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "region" } }, "required": ["kind"] },
+          "then": { "properties": { "value": { "$ref": "#/$defs/crop" } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "exact_colour" } }, "required": ["kind"] },
+          "then": { "properties": { "value": { "$ref": "#/$defs/exactColourSelection" } } }
+        }
+      ]
+    },
+    "clusterSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clusterId"],
+      "properties": { "clusterId": { "type": "string", "minLength": 1, "maxLength": 120 } }
+    },
+    "pointSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+        "y": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "exactColourSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hex"],
+      "properties": { "hex": { "type": "string", "pattern": "^#[0-9A-F]{6}$" } }
+    },
+    "edit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "action", "target", "before", "after"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "action": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "target": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "before": {},
+        "after": {}
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["copy", "activeTemplateId", "layouts", "previewImageRequired", "containsPreviewImageBytes"],
+      "properties": {
+        "copy": {
+          "type": "object",
+          "maxProperties": 16,
+          "additionalProperties": { "type": "string", "maxLength": 5000 }
+        },
+        "activeTemplateId": {
+          "type": "string",
+          "enum": ["cover", "title_body", "quote", "image_text", "evidence_data"]
+        },
+        "layouts": {
+          "type": "object",
+          "maxProperties": 5,
+          "propertyNames": {
+            "enum": ["cover", "title_body", "quote", "image_text", "evidence_data"]
+          },
+          "additionalProperties": { "$ref": "#/$defs/layoutState" }
+        },
+        "previewImageRequired": { "type": "boolean" },
+        "previewImageHash": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "containsPreviewImageBytes": { "const": false }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "previewImageRequired": { "const": true } },
+            "required": ["previewImageRequired"]
+          },
+          "then": {
+            "required": ["previewImageHash"],
+            "properties": { "previewImageHash": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+          }
+        }
+      ]
+    },
+    "layoutState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["imagePosition", "imageFit", "focalPoint", "roominess"],
+      "properties": {
+        "imagePosition": {
+          "type": "string",
+          "enum": ["none", "left", "right", "full_bleed"]
+        },
+        "imageFit": { "type": "string", "enum": ["contain", "cover"] },
+        "focalPoint": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y"],
+          "properties": {
+            "x": { "type": "number", "minimum": 0, "maximum": 1 },
+            "y": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "roominess": { "type": "string", "enum": ["standard", "roomier"] }
+      }
+    },
+    "exportDisclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["containsSourcePixels", "containsPreviewPixels", "containsSourceFingerprint", "containsDerivedColourData", "containsUserCopy", "containsOriginalFilename"],
+      "properties": {
+        "containsSourcePixels": { "const": false },
+        "containsPreviewPixels": { "const": false },
+        "containsSourceFingerprint": { "const": true },
+        "containsDerivedColourData": { "const": true },
+        "containsUserCopy": { "type": "boolean" },
+        "containsOriginalFilename": { "const": false }
+      }
+    }
+  }
+}

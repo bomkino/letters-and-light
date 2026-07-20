@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "product": "Letters & Light",
+  "thesis": "Type gives language a body. Colour gives it light, temperature, and hierarchy. The complete result is one inspectable deck direction, not two recommendation cards taped together.",
+  "entryRoutes": [
+    {
+      "id": "whole",
+      "label": "Set the whole thing",
+      "preserves": ["all_type_set_features", "all_color_please_features"],
+      "isPrimary": true
+    },
+    {
+      "id": "type",
+      "label": "Start with type",
+      "preserves": ["type_questionnaire", "collection", "maker_stories", "same_copy_comparison", "type_exports"],
+      "canContinueTo": "colour"
+    },
+    {
+      "id": "colour",
+      "label": "Start with colour",
+      "preserves": ["local_source", "source_preparation", "quick_path", "guided_path", "three_palette_systems", "preview_lab", "colour_corrections", "colour_exports"],
+      "canContinueTo": "type",
+      "paths": {
+        "quick": "No questionnaire. Visible defaults and uncertainty remain explicit.",
+        "guided": "Ask only context that changes the recommendation, including conditional data count and midpoint."
+      }
+    },
+    {
+      "id": "collection",
+      "label": "Wander through the collection",
+      "preserves": ["eight_candidate_directions", "crafted_specimens", "maker_stories", "try_own_words", "fit_this_to_my_deck"],
+      "startsWithoutQuestionnaire": true,
+      "fitActionChangesRouteTo": "type"
+    }
+  ],
+  "sharedFacts": [
+    {
+      "id": "artifactType",
+      "typeOwner": "artifactType",
+      "colourEffect": "selects copy pack and preview hazards",
+      "neverDoes": "choose hue or font by industry stereotype"
+    },
+    {
+      "id": "viewing",
+      "typeOwner": "viewingContexts",
+      "colourOwner": "delivery",
+      "mapping": {
+        "largeRoom": "live_room",
+        "laptop": "screen_share",
+        "phone": "phone",
+        "mixedUnknown": "mixed"
+      }
+    },
+    {
+      "id": "pressure",
+      "typeOwner": "density",
+      "colourOwner": "contentLoad",
+      "mapping": {
+        "sparse": "spare",
+        "moderate": "balanced",
+        "dense": "dense",
+        "varied": "unknown"
+      }
+    },
+    {
+      "id": "data",
+      "typeOwner": "contentNeeds",
+      "colourOwner": "dataNeed",
+      "rule": "Typography checks numeral and utility behaviour. Colour checks series semantics and distinction. Neither substitutes for labels or shape."
+    },
+    {
+      "id": "previewCopy",
+      "typeOwner": "previewCopy",
+      "colourOwner": "quickCopy",
+      "rule": "Collect once, keep local, render identically across every surviving direction."
+    }
+  ],
+  "wholeJourney": [
+    "promise_and_route",
+    "local_source_optional_but_encouraged",
+    "source_prepare_and_map",
+    "artifact",
+    "font_constraint",
+    "tool_handoff_and_viewing",
+    "density_content_and_data",
+    "writing_systems_and_character",
+    "source_relationship_and_base",
+    "optional_real_copy",
+    "independent_type_and_colour_engines",
+    "relationship_composer",
+    "one_direction_card_with_alternatives",
+    "shared_preview_lab",
+    "independent_corrections_and_recomposition",
+    "destination_led_exports",
+    "optional_pitch_dog_promotion_after_complete_value"
+  ],
+  "ownership": {
+    "typeEngine": ["eligibility", "ordering", "roles", "evidence", "type_caveats"],
+    "colourEngine": ["pixels", "clusters", "roles", "values", "contrast", "provenance", "palette_recommendation"],
+    "relationshipComposer": ["composition_guidance", "two_leads_warning", "same_specimen_plan"],
+    "frontend": ["presentation", "interaction", "motion", "accessible_semantics", "browser_measurement", "file_and_font_loading"],
+    "frontendForbidden": ["new_scores", "shadow_eligibility", "mutated_colour_values", "hidden_caveats", "candidate_as_verified"]
+  },
+  "privacy": {
+    "runtime": "static_local_first",
+    "forbidden": ["ai", "api", "database", "account", "analytics", "email_gate", "remote_font_cdn", "user_copy_network", "image_upload"],
+    "projectFileExcludes": ["image_pixels", "original_filename"],
+    "valueBeforePromotion": true
+  }
+}

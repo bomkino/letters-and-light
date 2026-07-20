@@ -1,0 +1,36 @@
+{
+  "id": "FB-008-fraunces-2026-07-19",
+  "kind": "fontBinary",
+  "status": "pass",
+  "testedOn": "2026-07-19",
+  "tester": {
+    "role": "automated fontTools inspection with human result review"
+  },
+  "subjects": {
+    "fontIds": ["fraunces"],
+    "fileIds": ["ff-fraunces-gf-1-000-roman-vf"],
+    "fileHashes": ["177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb"]
+  },
+  "environment": {
+    "operatingSystem": "macOS",
+    "operatingSystemVersion": "27.0",
+    "application": "fontTools",
+    "applicationVersion": "4.63.0",
+    "device": "arm64 Mac",
+    "networkState": "online"
+  },
+  "input": "Fraunces[SOFT,WONK,opsz,wght].ttf from Google Fonts commit ac502d8eff76ef4d9477cdcc8ef7d0c84fde5372.",
+  "steps": [
+    "Download the exact TTF from the pinned Google Fonts source commit.",
+    "Calculate SHA-256.",
+    "Inspect name, version, OS/2 fsType, fvar axes, cmap, GSUB/GPOS feature tags, and required currency code points.",
+    "Compare advance widths of base digits zero through nine."
+  ],
+  "expected": "File parses cleanly and exposes identity, embedding flag, axes, binary coverage, features, currency glyphs, and numeral behaviour.",
+  "actual": "Parsed as Fraunces version 1.000. fsType was 0. Axes were optical size 9–144, weight 100–900, softness 0–100, and wonk 0–1. Selected Latin checks passed; Greek and Cyrillic did not. INR, USD, EUR, GBP, and JPY were present. Base digits were proportional and no tabular-figure feature was found in the inspected file.",
+  "artifacts": [
+    { "pathOrUrl": "../Data/candidate-fonts.json", "description": "Candidate metadata derived from this inspection" }
+  ],
+  "notes": "Pass covers binary inspection only. The family remains display-only in this collection until visual, axis-preset, application, and human review pass.",
+  "followUp": "Choose restrained axis presets, inspect italics and static files, and run the full specimen and application matrix."
+}

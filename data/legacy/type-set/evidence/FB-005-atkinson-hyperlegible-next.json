@@ -1,0 +1,36 @@
+{
+  "id": "FB-005-atkinson-hyperlegible-next-2026-07-19",
+  "kind": "fontBinary",
+  "status": "pass",
+  "testedOn": "2026-07-19",
+  "tester": {
+    "role": "automated fontTools inspection with human result review"
+  },
+  "subjects": {
+    "fontIds": ["atkinsonHyperlegibleNext"],
+    "fileIds": ["ff-atkinson-next-gf-2-001-roman-vf"],
+    "fileHashes": ["5a455d1cfa099b601ab70751bb9673e8fe1854dc4500c80e1a220d0d75e31745"]
+  },
+  "environment": {
+    "operatingSystem": "macOS",
+    "operatingSystemVersion": "27.0",
+    "application": "fontTools",
+    "applicationVersion": "4.63.0",
+    "device": "arm64 Mac",
+    "networkState": "online"
+  },
+  "input": "AtkinsonHyperlegibleNext[wght].ttf from Google Fonts commit 66eef70728ca29f28c31cdc5e7947f2c2de73e8d.",
+  "steps": [
+    "Download the exact TTF from the pinned Google Fonts source commit.",
+    "Calculate SHA-256.",
+    "Inspect name, version, OS/2 fsType, fvar axes, cmap, GSUB/GPOS feature tags, and required currency code points.",
+    "Compare advance widths of base digits zero through nine."
+  ],
+  "expected": "File parses cleanly and exposes enough metadata to record identity, embedding flag, axes, binary coverage, features, currency glyphs, and numeral behaviour.",
+  "actual": "Parsed as Atkinson Hyperlegible Next version 2.001. fsType was 0. Weight axis was 200–800. Latin and Latin-extension subsets are declared by the distribution; selected Latin and combining-mark checks passed, but the tested Vietnamese precomposed and dot-below characters were not both present. INR, USD, EUR, GBP, and JPY were present. Base digits were proportional; pnum and tnum features were present.",
+  "artifacts": [
+    { "pathOrUrl": "../Data/candidate-fonts.json", "description": "Candidate metadata derived from this inspection" }
+  ],
+  "notes": "Pass covers this binary inspection only. It does not validate Braille Institute legibility claims for a particular user, accessibility, complete language support, application behaviour, or production-file selection.",
+  "followUp": "Run corpus tests, low-vision user review, static-file selection, and the platform matrix."
+}

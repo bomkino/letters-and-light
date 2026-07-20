@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedOn": "2026-07-20",
+  "sourcePolicy": "public_release_assets_only",
+  "licenseBoundary": "MIT except the named pitch.dog mark; see LICENSES.md",
+  "assets": [
+    {
+      "path": "public/assets/letters-light-optical-still-v1.png",
+      "sha256": "519293226f862dcc41d54c4ea4f58ef9ce0be68c64990e37482c483ef6cfce65",
+      "role": "hero_art_master",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/letters-light-optical-still-v1-1600w.webp",
+      "sha256": "c9625670d6c5a145b48c3a76796bf7790653261291da84c1737f2baa809b3f3f",
+      "role": "hero_art_1600w",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/letters-light-optical-still-v1-960w.webp",
+      "sha256": "b7cd1a784df7653215ee8d8835a983d3e5e2f2ec29cf25002aa00879aaa6ba26",
+      "role": "hero_art_960w",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/film-grain-v1.png",
+      "sha256": "d98a4394e5a59934546b499a2495174f892d690773ed1c6772debe9cd59aa6ad",
+      "role": "interface_grain",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/og-banner.png",
+      "sha256": "346ce5bbd464202d8ea1b6ab1decdb410f6c296576e63f7adaac8de71b3f472c",
+      "role": "open_graph_image",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/favicon-32.png",
+      "sha256": "2376bf0b0a27e7add639497bb552eddc306131369fd0c22b6620c8e806f3bd3c",
+      "role": "favicon",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/icon-192.png",
+      "sha256": "296a2ea318773c68cab367a244a9dc3e7340166887d65c6292e7c5e06ffe378e",
+      "role": "touch_icon",
+      "license": "MIT"
+    },
+    {
+      "path": "public/assets/brand/RectangleA_logomark-fullcolor-rgb.svg",
+      "sha256": "bd84cb2e7aed3f64cc00e251b6397e2233a4087b87dff4877e251b3dba558442",
+      "role": "pitch_dog_mark",
+      "license": "TRADEMARKS.md"
+    }
+  ]
+}

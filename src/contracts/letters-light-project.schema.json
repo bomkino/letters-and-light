@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pitch.dog/schemas/letters-light/project.v1.schema.json",
+  "title": "Letters & Light local project file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "engineVersions", "projectId", "revision", "createdAt", "updatedAt", "source", "answers", "direction", "privacy"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "engineVersions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "colour", "harmony"],
+      "properties": {
+        "type": { "type": "string" },
+        "colour": { "type": "string" },
+        "harmony": { "type": "string" }
+      }
+    },
+    "projectId": { "type": "string", "minLength": 1 },
+    "revision": { "type": "integer", "minimum": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceFileHash", "workingPixelHash", "width", "height", "relinkRequired"],
+      "properties": {
+        "sourceFileHash": { "oneOf": [{ "type": "null" }, { "type": "string", "pattern": "^[0-9a-f]{64}$" }] },
+        "workingPixelHash": { "oneOf": [{ "type": "null" }, { "type": "string", "pattern": "^[0-9a-f]{64}$" }] },
+        "width": { "type": ["integer", "null"], "minimum": 1 },
+        "height": { "type": ["integer", "null"], "minimum": 1 },
+        "relinkRequired": { "type": "boolean" }
+      }
+    },
+    "answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "colour"],
+      "properties": {
+        "type": { "type": "object" },
+        "colour": { "type": "object" }
+      }
+    },
+    "direction": { "$ref": "./direction-card.schema.json" },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["containsImagePixels", "containsOriginalFilename", "containsPreviewCopy", "localOnly"],
+      "properties": {
+        "containsImagePixels": { "const": false },
+        "containsOriginalFilename": { "const": false },
+        "containsPreviewCopy": { "type": "boolean" },
+        "localOnly": { "const": true }
+      }
+    }
+  }
+}
