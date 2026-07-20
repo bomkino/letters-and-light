@@ -4,7 +4,7 @@
 
 Letters & Light is a local-first type and color direction studio for presentation makers. Find a typographic voice, pull a working palette from one image, or bring both together on real 16:9 slide layouts.
 
-[Open the live tool](LIVE_URL_PENDING) · [Read the product guide](docs/PRODUCT.md) · [See how it works](docs/ARCHITECTURE.md)
+[Open the live tool](https://letters-and-light.dog-pitch.chatgpt.site) · [Read the product guide](docs/PRODUCT.md) · [See how it works](docs/ARCHITECTURE.md)
 
 ![Abstract optical still life made for Letters & Light: paper, light, glass and color in a 16:9 field.](public/assets/letters-light-optical-still-v1.png)
 

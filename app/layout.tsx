@@ -7,6 +7,7 @@ import "../web/src/styles/experience.css";
 import "../web/src/styles/print.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://letters-and-light.dog-pitch.chatgpt.site"),
   title: "Letters & Light — make your deck easier to read",
   description:
     "Find a clear type direction, build a useful color palette from one image, and see both on real 16:9 slides. A presentation tool by pitch.dog.",

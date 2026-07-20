@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/bomkino/letters-and-light.git"
   },
+  "homepage": "https://letters-and-light.dog-pitch.chatgpt.site",
   "bugs": "https://github.com/bomkino/letters-and-light/issues",
   "scripts": {
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
