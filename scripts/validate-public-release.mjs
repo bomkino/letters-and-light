@@ -1,7 +1,9 @@
 import { createHash } from "node:crypto";
+import { execFile } from "node:child_process";
 import { readdir, readFile, stat } from "node:fs/promises";
 import { extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const failures = [];
@@ -10,6 +12,7 @@ const pass = (message) => checks.push(message);
 const fail = (message) => failures.push(message);
 const assert = (condition, message) => (condition ? pass(message) : fail(message));
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const execFileAsync = promisify(execFile);
 
 const ignoredDirectories = new Set([".git", ".next", ".wrangler", "dist", "node_modules"]);
 const walk = async (directory) => {
@@ -47,9 +50,13 @@ assert(jsonFiles.length === 32, `Public contracts and data parse (${jsonFiles.le
 
 const manifest = JSON.parse(await readFile(join(root, "data/asset-manifest.json"), "utf8"));
 assert(manifest.assets.length === 8, "The public asset allow-list contains exactly eight intentional assets.");
+const trackedFiles = await execFileAsync("git", ["ls-files", "-z"], { cwd: root })
+  .then(({ stdout }) => new Set(stdout.split("\0").filter(Boolean)))
+  .catch(() => null);
 for (const asset of manifest.assets) {
   try {
     assert(asset.path.startsWith("public/"), `Public asset stays inside public/: ${asset.path}.`);
+    if (trackedFiles) assert(trackedFiles.has(asset.path), `Public asset is tracked by Git: ${asset.path}.`);
     const bytes = await readFile(join(root, asset.path));
     assert(sha256(bytes) === asset.sha256, `Public asset hash matches: ${asset.path}.`);
   } catch (error) {
