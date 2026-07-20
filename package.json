@@ -22,6 +22,7 @@
     "type-library:sync": "node scripts/sync-type-library.mjs",
     "type-library:validate": "node scripts/validate-type-library.mjs",
     "release:validate": "node scripts/validate-public-release.mjs",
+    "security:audit": "npm audit --audit-level=high",
     "site:validate": "node scripts/validate-site-build.mjs",
     "test": "npm run core:test && npm run web:test",
     "check": "npm run release:validate && npm run type-library:validate && npm run core:test && npm run web:typecheck && npm run web:test && npm run build && npm run site:validate"
@@ -29,29 +30,32 @@
   "engines": {
     "node": ">=22.13.0"
   },
+  "overrides": {
+    "postcss": "8.5.20"
+  },
   "dependencies": {
-    "next": "16.2.6",
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/vite-plugin": "1.45.1",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
     "@testing-library/user-event": "14.5.2",
     "@types/node": "22.19.19",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
+    "@vitejs/plugin-react": "6.0.3",
+    "@vitejs/plugin-rsc": "0.5.28",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.2.10",
     "jsdom": "25.0.1",
-    "react-server-dom-webpack": "19.2.6",
+    "react-server-dom-webpack": "19.2.7",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
-    "vite": "8.0.13",
+    "vite": "8.1.5",
     "vitest": "3.2.7",
-    "wrangler": "4.92.0"
+    "wrangler": "4.112.0"
   }
 }

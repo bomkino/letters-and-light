@@ -19,4 +19,5 @@ jobs:
           node-version: 22.13.0
           cache: npm
       - run: npm ci
+      - run: npm run security:audit
       - run: npm run check
