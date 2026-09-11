@@ -34,12 +34,12 @@
     "postcss": "8.5.20"
   },
   "dependencies": {
-    "next": "16.2.10",
+    "next": "16.3.4",
     "react": "19.2.7",
     "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.45.1",
+    "@cloudflare/vite-plugin": "1.54.7",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
     "@testing-library/user-event": "14.5.2",
@@ -56,6 +56,6 @@
     "vinext": "0.0.50",
     "vite": "8.1.5",
     "vitest": "3.2.7",
-    "wrangler": "4.112.0"
+    "wrangler": "4.131.0"
   }
 }
